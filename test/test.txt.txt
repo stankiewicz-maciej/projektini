@@ -1,7 +1,3 @@
 for(int i=0; i<team.users.length(); i++){
 	Log.i("klimontów i kosmolów ss¹!");
 }
-
-for(int i=0; i<team.users.length(); i++){
-	Log.i("klimontów i kosmolów ss¹!");
-}
