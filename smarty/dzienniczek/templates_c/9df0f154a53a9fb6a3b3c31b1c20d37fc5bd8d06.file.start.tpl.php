@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 21:35:11
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 22:45:23
          compiled from "..\smarty\dzienniczek\templates\start.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:315995180de9294aea5-97180751%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9df0f154a53a9fb6a3b3c31b1c20d37fc5bd8d06' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\start.tpl',
-      1 => 1378142228,
+      1 => 1378154696,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378150446,
+      1 => 1378154559,
       2 => 'file',
     ),
   ),
@@ -69,12 +69,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div style="width:760px; height:450px; overflow:hidden; margin: 0 auto; position:relative; margin-top:35px;">
 		
 <a href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
-?action=userdata"><div id="btn1" style="float:left"> <p align="center"> <img src="images/personal.png" align="middle"  /><br/>Twoje dane</p> </div> </a>
-    <a href="2.html"><div id="btn2" style="float:left"> <p align="center"> <img src="images/marks.png" align="middle"  /><br/>Oceny</p> </div> </a>
-    <a href="3.html"><div id="btn3" style="float:left"> <p align="center"> <img src="images/homeworks.png" align="middle"  /><br/> Prace domowe</p> </div> </a>
-    <a href="4.html"><div id="btn4" style="float:left"> <p align="center"> <img src="images/lesson_plan.png" align="middle"  /><br/>Plan lekcji</p> </div> </a>
-    <a href="5.html"><div id="btn5" style="float:left"> <p align="center"> <img src="images/director_issues.png" align="middle"  /><br/>Zarządzaj szkołą</p> </div> </a>
-    <a href="6.html"><div id="btn6" style="float:left"> <p align="center"> <img src="images/childrens.png" align="middle"  /><br/>Dzieci</p> </div> </a>
+?action=userdata"><div class="radius" id="btn1" style="float:left"> <p align="center"> <img src="images/personal.png" align="middle"  /><br/>Twoje dane</p> </div> </a>
+    <a href="2.html"><div class="radius" id="btn2" style="float:left"> <p align="center"> <img src="images/marks.png" align="middle"  /><br/>Oceny</p> </div> </a>
+    <a href="3.html"><div class="radius" id="btn3" style="float:left"> <p align="center"> <img src="images/homeworks.png" align="middle"  /><br/> Prace domowe</p> </div> </a>
+    <a href="4.html"><div class="radius" id="btn4" style="float:left"> <p align="center"> <img src="images/lesson_plan.png" align="middle"  /><br/>Plan lekcji</p> </div> </a>
+    <a href="5.html"><div class="radius" id="btn5" style="float:left"> <p align="center"> <img src="images/director_issues.png" align="middle"  /><br/>Zarządzaj szkołą</p> </div> </a>
+    <a href="6.html"><div class="radius" id="btn6" style="float:left"> <p align="center"> <img src="images/childrens.png" align="middle"  /><br/>Dzieci</p> </div> </a>
 
 	</div>
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 21:06:35
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 22:47:49
          compiled from "..\smarty\dzienniczek\templates\userdata.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:134995224ca323d73b8-42672068%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -13,7 +13,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378148681,
+      1 => 1378154559,
       2 => 'file',
     ),
   ),
@@ -40,9 +40,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		$("#caption").delay(0).animate({ 
 			top: "+=60px",}, 1500 );
 	});
-	$("a").click(function () {
-  $("a").fadeOut("slow");
-  });
+	
+	
 </script>
 <title>Dzienniczek Ucznia</title>
 <link rel="stylesheet" type="text/css" href="css/main_style.css">
@@ -57,7 +56,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	  <div style="width:760px; height:80px; margin: 0 auto; overflow:hidden; position:relative">
 			
 			<div id="caption" style="height:44px; margin-top:20px;float:left; margin-left:12px; position:absolute">Twoje dane</div>
-			
+
 			<div id="login" style="left:500px; height:44px; margin-top:20px;float:right; margin-left:12px; position:absolute"> Jesteś zalogowany jako: <?php echo $_smarty_tpl->tpl_vars['login']->value;?>
  <a id="out" href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
 ?action=logout"> Wylogowanie </a> </div>

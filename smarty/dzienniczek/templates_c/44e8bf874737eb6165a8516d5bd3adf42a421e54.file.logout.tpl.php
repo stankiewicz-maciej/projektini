@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 22:10:30
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 23:24:14
          compiled from "..\smarty\dzienniczek\templates\logout.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:83785224cc0e3c6999-88442731%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '44e8bf874737eb6165a8516d5bd3adf42a421e54' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\logout.tpl',
-      1 => 1378152612,
+      1 => 1378157045,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378150446,
+      1 => 1378154559,
       2 => 'file',
     ),
   ),
@@ -46,13 +46,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <title>Dzienniczek Ucznia</title>
 <link rel="stylesheet" type="text/css" href="css/main_style.css">
 
-	<script type="text/javascript" src="js/start.js"></script> 
-    <script type="text/javascript">
+	 <script type="text/javascript">
 	
 	$(document).ready(function(){
-	$("#btn1").delay(0).animate({ 
+	$("#btn5").delay(0).animate({ 
         left: "-=500px",
-    }, 3000 );
+    }, 1500 );
 });
 </script>
 
@@ -75,7 +74,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div style="width:760px; height:450px; overflow:hidden; margin: 0 auto; position:relative; margin-top:35px;">
 		
 <a href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
-?action=start"><div id="btn1" style="float:left"> <p align="center"> <img src="images/login.png" align="middle"  /><br/>Zaloguj ponownie</p> </div> </a>
+?action=start"><div class="radius" id="btn5" class="radius" style="float:left"> <p align="center" style="text-height:4px"> <img src="images/login.png" align="middle"  /><br/>Zaloguj ponownie</p> </div> </a>
 
 	</div>
 

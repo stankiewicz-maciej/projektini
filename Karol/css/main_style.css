@@ -3,6 +3,14 @@ body{
 	background-color:#369;
 	overflow:auto;
 }
+.radius{
+		border-radius: 12px;
+  		-webkit-border-radius: 12px;
+  		-moz-border-radius: 12px;
+
+  		box-shadow: 2px 4px 6px #555;
+  		-moz-box-shadow: 2px 4px 6px #555;
+  		-webkit-box-shadow: 2px 4px 6px #555;}
 
 #btn1{
 	background:#06F;
@@ -143,3 +151,13 @@ body{
 	font-size:25px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+<!--sylizacja formularza-->
+.form1{
+	margin:0 auto;
+	width:450px;
+	padding:14px;
+	background-color:#99FF33;
+
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;}
