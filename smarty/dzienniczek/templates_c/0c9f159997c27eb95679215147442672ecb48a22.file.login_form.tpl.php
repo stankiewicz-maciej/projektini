@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 23:24:08
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 23:41:13
          compiled from "..\smarty\dzienniczek\templates\login_form.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:159505180de8b0fdc16-47073903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0c9f159997c27eb95679215147442672ecb48a22' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\login_form.tpl',
-      1 => 1378156914,
+      1 => 1378244410,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378154559,
+      1 => 1378232904,
       2 => 'file',
     ),
   ),
@@ -35,6 +35,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#caption").delay(0).animate({ 
@@ -45,7 +47,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </script>
 <title>Dzienniczek Ucznia</title>
 <link rel="stylesheet" type="text/css" href="css/main_style.css">
- 
+
+<script type="text/javascript">
+
+ 	 $(function() {
+    $( "#slider" ).slider();
+  });
+  </script>
+
+
 </head>
 
 <body link="#FFFFFF">
@@ -64,20 +74,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 	<div style="width:760px; height:450px; overflow:hidden; margin: 0 auto; position:relative; margin-top:35px;">
 		
-<div id="div1" align="center">
-<h2>Wprowadź nazwę i hasło użytkownika.</h2>
-    <form class="form1" name="formularz1"  action="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
+
+<div id="log_form">
+<form class="myform"   action="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
 ?action=login" method="post">
-    <table border="0">
-    <tr><td>Użytkownik:</td> <td><input name ="Login" type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Login'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-" /></td></tr>
-    <tr><td>Hasło:</td> <td> <input name="Password" type="password" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Password'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
-" /> </td></tr>
-    <tr><td><input type="radio" name="stan" value="uczen" checked="checked" />Uczeń </td> <td><input type="radio" name="stan" value="nauczyciel" />Nauczyciel</td></tr>
-    
-    <tr><td colspan="2" align="center"><input type="submit" value="Zaloguj" /></td></tr>
-    </table>
+    <br/>
+    <br/>
+    <div align="center"><input class="fill" name ="Login" placeholder="Użytkownik" type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Login'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" /></div><br/>
+   <div align="center"><input align="middle" class="fill" placeholder="Hasło" name="Password" type="password" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Password'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+" /></div><br/>
+  <div align="center"><input type="radio" id="radio1" name="radios" value="student" checked>
+   <label for="radio1">Uczeń</label>
+   
+	<input type="radio" id="radio2" name="radios"value="teacher">
+   <label for="radio2">Nauczyciel</label></div><br/>
+   <div align="center"><input class="logbtn" type="submit" value="Zaloguj" /></div>
+    <br/><br/>
+</form>
 </div>
+
+
 
 	</div>
 

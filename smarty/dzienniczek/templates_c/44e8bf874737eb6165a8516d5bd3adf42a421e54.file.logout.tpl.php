@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 23:24:14
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 20:37:07
          compiled from "..\smarty\dzienniczek\templates\logout.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:83785224cc0e3c6999-88442731%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -13,7 +13,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378154559,
+      1 => 1378232904,
       2 => 'file',
     ),
   ),
@@ -35,6 +35,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#caption").delay(0).animate({ 
