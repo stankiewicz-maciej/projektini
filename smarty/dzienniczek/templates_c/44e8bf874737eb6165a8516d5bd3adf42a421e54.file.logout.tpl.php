@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-05 07:05:05
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-05 14:08:45
          compiled from "..\smarty\dzienniczek\templates\logout.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:83785224cc0e3c6999-88442731%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -13,7 +13,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378364684,
+      1 => 1378390001,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5224cc0e4039c5_11554350',
   'variables' => 
   array (
+    'isStudent' => 0,
+    'isParent' => 0,
+    'isTeacher' => 0,
     'login' => 0,
     'SCRIPT_NAME' => 0,
   ),
@@ -58,6 +61,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </script>
 
 </head>
+
+<?php $_smarty_tpl->tpl_vars['isStudent'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isStudent']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
+<?php $_smarty_tpl->tpl_vars['isParent'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isParent']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
+<?php $_smarty_tpl->tpl_vars['isTeacher'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isTeacher']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
 
 <body link="#FFFFFF">
 

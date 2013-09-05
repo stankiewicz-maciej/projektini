@@ -1,7 +1,7 @@
 BEGIN;
 
 CREATE TABLE version(tid serial PRIMARY KEY, dbversion integer);
-INSERT INTO version(dbversion) VALUES(5);
+INSERT INTO version(dbversion) VALUES(6);
 
 CREATE TABLE teachers(tid serial PRIMARY KEY, name varchar(40), surname varchar(40), mail varchar(40), contactphone varchar(12), login varchar(20), password varchar(20));
 
@@ -11,5 +11,10 @@ INSERT INTO teachers(name, surname, mail, contactphone, login, password) VALUES 
 CREATE TABLE parents(tid serial PRIMARY KEY, name varchar(40), surname varchar(40), mail varchar(40), contactphone varchar(12), address varchar(60), workaddress varchar(60), pesel varchar(11), login varchar(20), password varchar(20));
 
 INSERT INTO parents(name, surname, mail, contactphone, address, workaddress, pesel, login, password) VALUES ('Zbigniew', 'Ziolo', 'zbygniewski@gmail.com', '435346457', 'Krakow Aleja Jana Pawla II, nr 44/7', 'Agh B2', '12353634525', 'zbigi', 'haslo');
+
+CREATE TABLE students(tid serial PRIMARY KEY, name varchar(40), surname varchar(40), mail varchar(40), contactphone varchar(12), address varchar(60), class varchar(10), pesel varchar(11), login varchar(20), password varchar(20));
+
+INSERT INTO students(name, surname, mail, contactphone, address, class, pesel, login, password) VALUES ('Kondrat', 'Malenczuk', 'adamadam@gmail.com', '435346457', 'Klasa VI', 'Agh B2', '12353634525', 'uczen', 'uczen');
+
 
 COMMIT;

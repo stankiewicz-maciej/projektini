@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 22:47:49
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-05 14:23:32
          compiled from "..\smarty\dzienniczek\templates\userdata.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:134995224ca323d73b8-42672068%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62f57c59b2e0ef75c8747986eeccc5a13c53ddc5' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\userdata.tpl',
-      1 => 1378142854,
+      1 => 1378364684,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378154559,
+      1 => 1378390001,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5224ca3245da43_24708670',
   'variables' => 
   array (
+    'isStudent' => 0,
+    'isParent' => 0,
+    'isTeacher' => 0,
     'login' => 0,
     'SCRIPT_NAME' => 0,
   ),
@@ -35,6 +38,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#caption").delay(0).animate({ 
@@ -47,6 +52,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <link rel="stylesheet" type="text/css" href="css/main_style.css">
  
 </head>
+
+<?php $_smarty_tpl->tpl_vars['isStudent'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isStudent']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
+<?php $_smarty_tpl->tpl_vars['isParent'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isParent']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
+<?php $_smarty_tpl->tpl_vars['isTeacher'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isTeacher']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
 
 <body link="#FFFFFF">
 

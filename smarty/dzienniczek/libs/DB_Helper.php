@@ -1,9 +1,10 @@
 <?php
+include('DB_Consts.php');
 
 class DB_Helper {
 
 	// only for development phase!
-	var $DB_VERSION = 5;
+	var $DB_VERSION = 6;
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
 
@@ -45,7 +46,7 @@ class DB_Helper {
 		} else {
 			$this->initDB($this->DB_CREATE_SCRIPT);
 		}
-		//pg_close($this->con);
+		pg_close($con);
 	}
 	
 	function loadNewDatabase($createFileName, $dropFileName) {
@@ -66,6 +67,19 @@ class DB_Helper {
 			fclose($file);
 			pg_close($this->con);
 		}
+	}
+	
+	function getUserCredentials($userType) {
+		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		if($userType == 'student') {
+			$rs = pg_query($con, DB_Consts::$GET_STUDENT_CREDENTIALS) or die("Cannot execute query:");
+		} else if($userType == 'parent') {
+			$rs = pg_query($con, DB_Consts::$GET_PARENT_CREDENTIALS) or die("Cannot execute query:");
+		} else if($userType == 'teacher') {
+			$rs = pg_query($con, DB_Consts::$GET_TEACHER_CREDENTIALS) or die("Cannot execute query:");
+		} 
+		pg_close($con);
+		return $rs;
 	}
 
 	function getChildrens($parentId) {

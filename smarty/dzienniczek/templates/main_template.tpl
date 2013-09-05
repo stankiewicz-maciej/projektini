@@ -18,6 +18,10 @@
 {block name=head}{/block}
 </head>
 
+{assign var='isStudent' value=$isStudent|default:false}
+{assign var='isParent' value=$isParent|default:false}
+{assign var='isTeacher' value=$isTeacher|default:false}
+
 <body link="#FFFFFF">
 
 	<!--header-->

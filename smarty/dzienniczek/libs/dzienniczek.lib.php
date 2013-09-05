@@ -1,5 +1,6 @@
 <?php
 include('DB_Helper.php');
+include('Model/User.php');
 /**
  * dzienniczek application library
  *
@@ -44,42 +45,46 @@ class Dzienniczek {
     // test if "Login" is empty
     if(strlen($formvars['Login']) == 0) {
       $this->error = 'login_empty';
-      return false; 
+      return User::$TYPE_NULL; 
     }
 
     // test if "Password" is empty
     if(strlen($formvars['Password']) == 0) {
       $this->error = 'password_empty';
-      return false; 
+      return User::$TYPE_NULL; 
     }
-	// temporary we open password file
-	if($fd = fopen("passwords.txt", "r"))	{
-		while(!feof($fd)){
-			$line = trim(fgets($fd));
-			$arr = explode(":", $line);
-			if(count($arr) < 2) continue;
-				
-			if($arr[0] !=$formvars['Login']) {
-				continue;
-			}
-			if($arr[1] ==$formvars['Password']){ 
-				// form passed validation
-				return true;
-			}
+	
+	$selected_user_type = $_POST['usertype'];
+	$rs = $this->db->getUserCredentials($selected_user_type);
+	while ($row = pg_fetch_array($rs)) {
+		if($row[0] !=$formvars['Login']) {
+			continue;
 		}
-		fclose($fd);
+		if($row[1] ==$formvars['Password']){ 
+			// form passed validation
+			return $selected_user_type;
+		}
 	}
 	
     // form fail validation
-    return false;
+    return User::$TYPE_NULL;
   }
   
   function isLogged() {
 	return isSet($_SESSION['zalogowany']) ;
   }
   
-  function login($formvars) {
+  function login($formvars, $user_type) {
 	$_SESSION['zalogowany']=$formvars['Login'];
+	$_SESSION['user_type']=$user_type;
+  }
+  
+  function getUserType() {
+	if(!isSet($_SESSION['user_type'])) {
+		return User::$TYPE_NULL;
+	} else {
+		return $_SESSION['user_type'];
+	}
   }
   
   function logout() {
@@ -89,10 +94,24 @@ class Dzienniczek {
 	}
 	else{
 		unset($_SESSION['zalogowany']);
+		unset($_SESSION['user_type']);
 		$message="Zostałeś pomyślnie wylogowany!";
 	}
 	session_destroy();
 	return $message;
+  }
+  
+  function setUserTypeFlag() {
+	$user_type = $this->getUserType();
+	if($user_type == User::$TYPE_STUDENT) {
+		$this->tpl->assign('isStudent', true);
+	}
+	else if($user_type == User::$TYPE_PARENT) {
+		$this->tpl->assign('isParent', true);
+	}
+	else if($user_type == User::$TYPE_TEACHER) {
+		$this->tpl->assign('isTeacher', true);
+	}
   }
   
   /* ------------------------------------------------------ BEGIN ACTIONS SECTION ------------------------------------------------------ */
@@ -115,6 +134,7 @@ class Dzienniczek {
   *
   */
   function displayStart() {
+	$this->setUserTypeFlag();
 	$this->tpl->assign('login', $_SESSION['zalogowany']);
 	$this->tpl->display('start.tpl'); 
   }
@@ -124,6 +144,7 @@ class Dzienniczek {
   *
   */
   function displayUserData() {
+	$this->setUserTypeFlag();
 	$this->tpl->assign('login', $_SESSION['zalogowany']);
 	$this->tpl->assign('imie', 'karol');
 	$this->tpl->assign('nazwisko', 'zurek');

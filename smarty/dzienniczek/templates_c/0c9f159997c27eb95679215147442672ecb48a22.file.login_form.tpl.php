@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-05 13:00:31
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-05 14:32:40
          compiled from "..\smarty\dzienniczek\templates\login_form.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:159505180de8b0fdc16-47073903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0c9f159997c27eb95679215147442672ecb48a22' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\login_form.tpl',
-      1 => 1378386023,
+      1 => 1378391558,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378364684,
+      1 => 1378390001,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5180de8b318d91_34985347',
   'variables' => 
   array (
+    'isStudent' => 0,
+    'isParent' => 0,
+    'isTeacher' => 0,
     'login' => 0,
     'SCRIPT_NAME' => 0,
   ),
@@ -58,6 +61,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 </head>
 
+<?php $_smarty_tpl->tpl_vars['isStudent'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isStudent']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
+<?php $_smarty_tpl->tpl_vars['isParent'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isParent']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
+<?php $_smarty_tpl->tpl_vars['isTeacher'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isTeacher']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
+
 <body link="#FFFFFF">
 
 	<!--header-->
@@ -86,11 +93,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " /></div><br/>
 	<div align="center">
 	
-		<input type="radio" id="radio1" name="usertype" value="student_parent" checked>
-		<label for="radio1">Uczeń/Rodzic</label>
+		<input type="radio" id="radio1" name="usertype" value="student" checked>
+		<label for="radio1">Uczeń</label>
+	
+		<input type="radio" id="radio2" name="usertype" value="parent" checked>
+		<label for="radio2">Rodzic</label>
 	   
-		<input type="radio" id="radio2" name="usertype" value="teacher">
-		<label for="radio2">Nauczyciel</label></div><br/>
+		<input type="radio" id="radio3" name="usertype" value="teacher">
+		<label for="radio3">Nauczyciel</label></div><br/>
 		
 		<div align="center"><input class="logbtn" type="submit" value="Zaloguj" />
 	</div>

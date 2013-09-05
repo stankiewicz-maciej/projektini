@@ -21,11 +21,14 @@
 	<div align="center"><input align="middle" class="fill" placeholder="Hasło" name="Password" type="password" value="{$post.Password|escape|default:''}" /></div><br/>
 	<div align="center">
 	
-		<input type="radio" id="radio1" name="usertype" value="student_parent" checked>
-		<label for="radio1">Uczeń/Rodzic</label>
+		<input type="radio" id="radio1" name="usertype" value="student" checked>
+		<label for="radio1">Uczeń</label>
+	
+		<input type="radio" id="radio2" name="usertype" value="parent" checked>
+		<label for="radio2">Rodzic</label>
 	   
-		<input type="radio" id="radio2" name="usertype" value="teacher">
-		<label for="radio2">Nauczyciel</label></div><br/>
+		<input type="radio" id="radio3" name="usertype" value="teacher">
+		<label for="radio3">Nauczyciel</label></div><br/>
 		
 		<div align="center"><input class="logbtn" type="submit" value="Zaloguj" />
 	</div>

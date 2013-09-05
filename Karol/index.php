@@ -26,8 +26,9 @@ if(!$_logged) {
 			$dzienniczek->displayForm('Nie jesteś zalogowany', $_POST);
 			break;
 		case 'login':
-			if($dzienniczek->isValidPass($_POST)) {
-				$dzienniczek->login($_POST);
+			$user_type = $dzienniczek->isValidPass($_POST);
+			if($user_type != User::$TYPE_NULL) {
+				$dzienniczek->login($_POST, $user_type);
 				$dzienniczek->displayStart();
 			} else {
 				$dzienniczek->displayForm('Nieprawidłowa nazwa lub hasło użytkownika', $_POST);
