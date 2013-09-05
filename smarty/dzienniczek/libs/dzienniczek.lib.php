@@ -1,5 +1,5 @@
 <?php
-
+include('DB_Helper.php');
 /**
  * dzienniczek application library
  *
@@ -24,8 +24,12 @@ class Dzienniczek {
 	
     // instantiate the template object
     $this->tpl = new Dzienniczek_Smarty;
-
+	$this->db = new DB_Helper;
   }
+  
+	function isDatabaseActual() {
+		$this->db->isDatabaseActual();
+	}
 
   /**
   * test if form information is valid

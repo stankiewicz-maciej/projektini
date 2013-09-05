@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 23:41:13
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-05 13:00:31
          compiled from "..\smarty\dzienniczek\templates\login_form.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:159505180de8b0fdc16-47073903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0c9f159997c27eb95679215147442672ecb48a22' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\login_form.tpl',
-      1 => 1378244410,
+      1 => 1378386023,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378232904,
+      1 => 1378364684,
       2 => 'file',
     ),
   ),
@@ -82,14 +82,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <br/>
     <div align="center"><input class="fill" name ="Login" placeholder="Użytkownik" type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Login'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " /></div><br/>
-   <div align="center"><input align="middle" class="fill" placeholder="Hasło" name="Password" type="password" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Password'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+	<div align="center"><input align="middle" class="fill" placeholder="Hasło" name="Password" type="password" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Password'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " /></div><br/>
-  <div align="center"><input type="radio" id="radio1" name="radios" value="student" checked>
-   <label for="radio1">Uczeń</label>
-   
-	<input type="radio" id="radio2" name="radios"value="teacher">
-   <label for="radio2">Nauczyciel</label></div><br/>
-   <div align="center"><input class="logbtn" type="submit" value="Zaloguj" /></div>
+	<div align="center">
+	
+		<input type="radio" id="radio1" name="usertype" value="student_parent" checked>
+		<label for="radio1">Uczeń/Rodzic</label>
+	   
+		<input type="radio" id="radio2" name="usertype" value="teacher">
+		<label for="radio2">Nauczyciel</label></div><br/>
+		
+		<div align="center"><input class="logbtn" type="submit" value="Zaloguj" />
+	</div>
     <br/><br/>
 </form>
 </div>

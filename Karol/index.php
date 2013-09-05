@@ -15,7 +15,10 @@ $_action = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'form';
 $_logged = $dzienniczek->isLogged();
 if($_action == 'form' && $_logged) {
 	$_action = 'start';
-}
+}	
+
+// ONLY FOR DEVELOPMENT PHASE
+$dzienniczek->isDatabaseActual();
 
 if(!$_logged) {
 	switch($_action) {
@@ -45,7 +48,7 @@ if(!$_logged) {
 				break;
 		case 'start':
 		default:
-			$dzienniczek->displayStart();    
+			$dzienniczek->displayStart();		
 			break;
 	}
 }	   
