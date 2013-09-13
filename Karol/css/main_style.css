@@ -3,6 +3,15 @@ body{
 	background-color:#369;
 	overflow:auto;
 }
+#error_alert{ display:none;
+			background-color:#FF1C1C;
+			font-family:Verdana, Geneva, sans-serif;
+			color:white;
+			
+			position:fixed;
+			width:40%;
+			left:30%;
+			top:20%;}
 .radius{
 		border-radius: 12px;
   		-webkit-border-radius: 12px;

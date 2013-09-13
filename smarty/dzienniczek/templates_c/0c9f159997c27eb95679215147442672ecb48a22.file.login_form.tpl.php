@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-05 14:32:40
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-13 22:14:12
          compiled from "..\smarty\dzienniczek\templates\login_form.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:159505180de8b0fdc16-47073903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0c9f159997c27eb95679215147442672ecb48a22' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\login_form.tpl',
-      1 => 1378391558,
+      1 => 1379103249,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1378390001,
+      1 => 1379017518,
       2 => 'file',
     ),
   ),
@@ -51,12 +51,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <title>Dzienniczek Ucznia</title>
 <link rel="stylesheet" type="text/css" href="css/main_style.css">
 
-<script type="text/javascript">
 
+<script type="text/javascript">
+$(document).ready(
+function(){
  	 $(function() {
     $( "#slider" ).slider();
   });
+ $("#error_alert").fadeIn(300).delay(3000).fadeOut(1000);
+});
   </script>
+
 
 
 </head>
@@ -86,10 +91,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <form class="myform"   action="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
 ?action=login" method="post">
     <br/>
+    <div align="center">
+    <div  class="radius" id="error_alert"><?php echo $_smarty_tpl->tpl_vars['message']->value;?>
+</div></div>
     <br/>
     <div align="center"><input class="fill" name ="Login" placeholder="Użytkownik" type="text" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Login'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " /></div><br/>
-	<div align="center"><input align="middle" class="fill" placeholder="Hasło" name="Password" type="password" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Password'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
+	<div align="center"><input  align="middle" class="fill" placeholder="Hasło" name="Password" type="password" value="<?php echo (($tmp = @htmlspecialchars($_smarty_tpl->tpl_vars['post']->value['Password'], ENT_QUOTES, 'UTF-8', true))===null||$tmp==='' ? '' : $tmp);?>
 " /></div><br/>
 	<div align="center">
 	
