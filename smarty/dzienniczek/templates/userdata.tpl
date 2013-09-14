@@ -4,8 +4,8 @@
 {block name=head} {/block}
 
 {block name=body}
-<p align="center">Imie: {$imie} </p> <br/><br/>
-
-<p align="center">Nazwisko: {$nazwisko} </p>
-
+{foreach from=$userData key=key item=item}
+{$key}: {$item} <br/>
+  
+{/foreach}
 {/block}

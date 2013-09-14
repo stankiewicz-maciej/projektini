@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 22:34:21
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-13 22:59:34
          compiled from "..\smarty\dzienniczek\templates\userdata.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:134995224ca323d73b8-42672068%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62f57c59b2e0ef75c8747986eeccc5a13c53ddc5' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\userdata.tpl',
-      1 => 1378142854,
+      1 => 1379105970,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
@@ -75,12 +75,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 	<div style="width:760px; height:450px; overflow:hidden; margin: 0 auto; position:relative; margin-top:35px;">
 		
-<p align="center">Imie: <?php echo $_smarty_tpl->tpl_vars['imie']->value;?>
- </p> <br/><br/>
-
-<p align="center">Nazwisko: <?php echo $_smarty_tpl->tpl_vars['nazwisko']->value;?>
- </p>
-
+<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['userData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+: <?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+ <br/>
+  
+<?php } ?>
 
 	</div>
 

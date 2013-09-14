@@ -95,6 +95,11 @@ class DB_Helper {
 	}
 
 	function getUserData($login, $type) {
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query='select * from teachers where login=\''.$login.'\';';
+		$row=pg_fetch_row($result);
+		$smarty->assign('userData', $row);
+		$smarty->display('userdata.tpl');
 
 	}
   
