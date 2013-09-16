@@ -36,7 +36,7 @@
 
 	</div>
 	
-	<div style="width:760px; height:450px; overflow:hidden; margin: 0 auto; position:relative; margin-top:35px;">
+	<div style="width:760px; height:450px; overflow:hidden; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
 		{block name=body}{/block}
 	</div>
 

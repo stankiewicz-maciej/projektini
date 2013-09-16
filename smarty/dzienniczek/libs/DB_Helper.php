@@ -3,7 +3,7 @@ include('DB_Consts.php');
 
 class DB_Helper {
 
-	// only for development phase!
+	// ONLY FOR DEVELOPMENT PHASE!
 	var $DB_VERSION = 6;
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
@@ -96,11 +96,23 @@ class DB_Helper {
 
 	function getUserData($login, $type) {
 		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-		$query='select * from teachers where login=\''.$login.'\';';
-		$row=pg_fetch_row($result);
-		$smarty->assign('userData', $row);
-		$smarty->display('userdata.tpl');
+		if($type == User::$TYPE_STUDENT)
+		{
+			$query = DB_Consts::$GET_STUDENT_DATA;
+		} 
+		else if ($type == User::$TYPE_PARENT)
+		{
+			$query = DB_Consts::$GET_PARENT_DATA;
+		}
+		else 
+		{
+			$query = DB_Consts::$GET_TEACHER_DATA;
+		}
+		$query .= $login . '\';';
 
+		$rs=pg_query($con, $query);
+		
+		return $rs;
 	}
   
 }

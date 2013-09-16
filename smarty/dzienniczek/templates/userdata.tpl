@@ -4,8 +4,14 @@
 {block name=head} {/block}
 
 {block name=body}
-{foreach from=$userData key=key item=item}
-{$key}: {$item} <br/>
-  
-{/foreach}
+
+	<table  cellspacing="0" style="border-collapse: collapse;">
+		{foreach from=$personal_data key=key item=item}
+			<tr>
+				<td class="key_column">{$key}</td>
+				<td class="value_column">{$item}</td>
+			</tr>
+		{/foreach}
+	</table>
+
 {/block}

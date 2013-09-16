@@ -87,6 +87,30 @@ class Dzienniczek {
 	}
   }
   
+  function isUserStudent() {
+  	if(!isSet($_SESSION['user_type']) || $_SESSION['user_type'] != User::$TYPE_STUDENT) {
+  		return false;
+  	} else {
+  		return true;
+  	}
+  }
+  
+  function isUserParent() {
+  	if(!isSet($_SESSION['user_type']) || $_SESSION['user_type'] != User::$TYPE_PARENT) {
+  		return false;
+  	} else {
+  		return true;
+  	}
+  }
+  
+  function isUserTeacher() {
+  	if(!isSet($_SESSION['user_type']) || $_SESSION['user_type'] != User::$TYPE_TEACHER) {
+  		return false;
+  	} else {
+  		return true;
+  	}
+  }
+  
   function logout() {
 	$message;
 	if(!isSet($_SESSION['zalogowany'])) {
@@ -146,8 +170,15 @@ class Dzienniczek {
   function displayUserData() {
 	$this->setUserTypeFlag();
 	$this->tpl->assign('login', $_SESSION['zalogowany']);
-	$this->tpl->assign('imie', 'karol');
-	$this->tpl->assign('nazwisko', 'zurek');
+	
+	$user_data = $this->db->getUserData($_SESSION['zalogowany'], $this->getUserType());
+	$row = pg_fetch_array($user_data);
+	
+	$this->tpl->assign('personal_data',
+                             array('Imie i nazwisko:' => $row[1].' '.$row[2],
+                             		'Email' => $row[3],
+                             		'Telefon' => $row[4],
+									));
 	$this->tpl->display('userdata.tpl'); 
   }
   
