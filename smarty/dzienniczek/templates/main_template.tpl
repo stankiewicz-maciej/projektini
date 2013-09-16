@@ -25,13 +25,13 @@
 <body link="#FFFFFF">
 
 	<!--header-->
-	<div style="width:100%; height:80px; overflow:hidden; margin: 0 auto; background-color:#333">
+	<div style="width:100%; height:100px; overflow:hidden; margin: 0 auto; background-color:#333">
 
-	  <div style="width:760px; height:80px; margin: 0 auto; overflow:hidden; position:relative">
+	  <div style="width:760px; height:100px; margin: 0 auto; overflow:hidden; position:relative">
 			
 			<div id="caption" style="height:44px; margin-top:20px;float:left; margin-left:12px; position:absolute">{block name=caption}{/block}</div>
 
-			<div id="login" style="left:500px; height:44px; margin-top:20px;float:right; margin-left:12px; position:absolute">{block name=log} Jesteś zalogowany jako: {$login} <a id="out" href="{$SCRIPT_NAME}?action=logout"> Wylogowanie </a>{/block} </div>
+			<div id="login" style="left:500px; height:60px; margin-top:20px;float:right; margin-left:12px; position:absolute">{block name=log} <p style="font-size: medium; color:#CCC;">Jesteś zalogowany jako: {$login} </p><a href="{$SCRIPT_NAME}?action=logout"> Wylogowanie </a>{/block} </div>
 	  </div>
 
 	</div>
