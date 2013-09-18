@@ -4,7 +4,7 @@ include('DB_Consts.php');
 class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
-	var $DB_VERSION = 6;
+	var $DB_VERSION = 9;
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
 
@@ -46,7 +46,7 @@ class DB_Helper {
 		} else {
 			$this->initDB($this->DB_CREATE_SCRIPT);
 		}
-		pg_close($con);
+		//pg_close($con);
 	}
 	
 	function loadNewDatabase($createFileName, $dropFileName) {

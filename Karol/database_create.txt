@@ -1,20 +1,91 @@
-BEGIN;
 
 CREATE TABLE version(tid serial PRIMARY KEY, dbversion integer);
-INSERT INTO version(dbversion) VALUES(6);
+INSERT INTO version(dbversion) VALUES(9);
 
-CREATE TABLE teachers(tid serial PRIMARY KEY, name varchar(40), surname varchar(40), mail varchar(40), contactphone varchar(12), login varchar(20), password varchar(20));
+CREATE TABLE "parents"("parent_id" serial primary key,"name" varchar,"surname" varchar,"address" varchar,"tel" int,"email" varchar,"login" varchar(20),"password" varchar(20));
 
-INSERT INTO teachers(name, surname, mail, contactphone, login, password) VALUES ('Andrzej', 'Kieltyka', 'andriej@gmail.com', '666457829', 'andriu', 'andriu123');
-INSERT INTO teachers(name, surname, mail, contactphone, login, password) VALUES ('Karol', 'Zurek', 'zurekarol@gmail.com', '517236833', 'karol', 'zurek');
+CREATE TABLE "teachers"("teacher_id" serial primary key,"name" varchar,"surname" varchar,"tel" int,"email" varchar,"login" varchar(20),"password" varchar(20));
 
-CREATE TABLE parents(tid serial PRIMARY KEY, name varchar(40), surname varchar(40), mail varchar(40), contactphone varchar(12), address varchar(60), workaddress varchar(60), pesel varchar(11), login varchar(20), password varchar(20));
+CREATE TABLE "classes"("class_id" serial primary key,"class_descr" varchar);
 
-INSERT INTO parents(name, surname, mail, contactphone, address, workaddress, pesel, login, password) VALUES ('Zbigniew', 'Ziolo', 'zbygniewski@gmail.com', '435346457', 'Krakow Aleja Jana Pawla II, nr 44/7', 'Agh B2', '12353634525', 'zbigi', 'haslo');
+CREATE TABLE "marks_types"("mark_type" int primary key,"mark_name" varchar);
 
-CREATE TABLE students(tid serial PRIMARY KEY, name varchar(40), surname varchar(40), mail varchar(40), contactphone varchar(12), address varchar(60), class varchar(10), pesel varchar(11), login varchar(20), password varchar(20));
+CREATE TABLE "days"("day_id" serial primary key,"day" varchar);
 
-INSERT INTO students(name, surname, mail, contactphone, address, class, pesel, login, password) VALUES ('Kondrat', 'Malenczuk', 'adamadam@gmail.com', '435346457', 'Klasa VI', 'Agh B2', '12353634525', 'uczen', 'uczen');
+CREATE TABLE "subjects"("subject_id" serial primary key,"subject_name" varchar);
+
+CREATE TABLE "events"("class_id" int references classes(class_id),"name" varchar,"description" varchar,"date_start" date,"date_end" date);
+
+CREATE TABLE "timetable"("class_id" int references classes(class_id),"day_id" int references days(day_id),"lesson_id" int,"subject_id" int references subjects(subject_id));
 
 
-COMMIT;
+
+CREATE TABLE "teaching"("teacher_id" int references teachers(teacher_id),"subject_id" int references subjects(subject_id),"class_id" int references classes(class_id));
+
+CREATE TABLE "students"("stud_id" serial primary key,"name" varchar,"surname" varchar,"pesel" varchar,"address" varchar,"tel" int,"email" varchar,"class_id" int references classes(class_id),"parent_id" int REFERENCES parents(parent_id),"login" varchar(20),"password" varchar(20));
+
+
+
+CREATE TABLE "marks"("student_id" int references students(stud_id),"subject_id" int references subjects(subject_id),"mark" int,"mark_type" int);
+
+
+CREATE TABLE "absence"("student_id" int references students(stud_id),"abs_date" date,"lesson_number" int);
+
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'adamo', 'adamo123' );
+
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Anna', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'aneczka', '1111' );
+
+
+
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Maria', 'Kowalska', 636333222, 'mariano@o2.pl', 'zbigi', 'haslo');
+
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+
+
+INSERT INTO classes (class_descr) VALUES ('IIIa');
+INSERT INTO classes (class_descr) VALUES ('IIIb');
+
+
+INSERT INTO marks_types (mark_type, mark_name) VALUES ( 1, 'sprawdzian');
+INSERT INTO marks_types (mark_type, mark_name) VALUES ( 2, 'praca domowa');
+INSERT INTO marks_types (mark_type, mark_name) VALUES ( 3, 'aktywnosc');
+
+
+
+INSERT INTO days ( day ) VALUES ('Poniedzialek');
+INSERT INTO days ( day ) VALUES ('Wtorek');
+INSERT INTO days ( day ) VALUES ('Sroda');
+INSERT INTO days ( day ) VALUES ('Czwartek');
+INSERT INTO days ( day ) VALUES ('Piatek');
+INSERT INTO days ( day ) VALUES ('Sobota');
+INSERT INTO days ( day ) VALUES ('Niedziela');
+
+
+INSERT INTO subjects (subject_name) VALUES ('Matematyka');
+INSERT INTO subjects (subject_name) VALUES ('Fizyka');
+INSERT INTO subjects (subject_name) VALUES ('Infromatyka');
+INSERT INTO subjects (subject_name) VALUES ('Biologia');
+INSERT INTO subjects (subject_name) VALUES ('Chemia');
+INSERT INTO subjects (subject_name) VALUES ('Geografia');
+INSERT INTO subjects (subject_name) VALUES ('J. Polski');
+INSERT INTO subjects (subject_name) VALUES ('J. Angielski');
+
+INSERT INTO events (class_id, name, description, date_start, date_end) VALUES (1, 'Wywiadowka', 'Zapraszamy wszystkich rodzicow na spotkanie w sali 5.1' , '2013-10-21', '2013-10-21' );
+
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 1, 1, 1);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 1, 2, 2);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 1, 3, 4);
+
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,1,1);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,2,1);
+
+
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Okraska', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'karolo', 'okrasa');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Zurek', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 1, 1, 'karolz', 'zurek');
+
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 2, 5, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 3, 4, 2);
+
+INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (1, '2013-09-16', 2);
+

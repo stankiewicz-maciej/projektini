@@ -8,9 +8,9 @@
 		
 		static $COLUMN_LOGIN = "login";
 		
-		static $GET_STUDENT_CREDENTIALS = "SELECT tid, login, password FROM students";
-		static $GET_PARENT_CREDENTIALS = "SELECT tid, login, password FROM parents";
-		static $GET_TEACHER_CREDENTIALS = "SELECT tid, login, password FROM teachers";
+		static $GET_STUDENT_CREDENTIALS = "SELECT stud_id, login, password FROM students";
+		static $GET_PARENT_CREDENTIALS = "SELECT parent_id, login, password FROM parents";
+		static $GET_TEACHER_CREDENTIALS = "SELECT teacher_id, login, password FROM teachers";
 		
 		static $GET_STUDENT_DATA = 'SELECT * from students where login=\'';
 		static $GET_PARENT_DATA = 'SELECT * from parents where login=\'';
