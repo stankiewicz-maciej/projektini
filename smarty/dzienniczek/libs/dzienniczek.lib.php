@@ -57,11 +57,12 @@ class Dzienniczek {
 	$selected_user_type = $_POST['usertype'];
 	$rs = $this->db->getUserCredentials($selected_user_type);
 	while ($row = pg_fetch_array($rs)) {
-		if($row[0] !=$formvars['Login']) {
+		if($row[1] !=$formvars['Login']) {
 			continue;
 		}
-		if($row[1] ==$formvars['Password']){ 
+		if($row[2] ==$formvars['Password']){ 
 			// form passed validation
+			$this->login($formvars, $selected_user_type, $row[0]);
 			return $selected_user_type;
 		}
 	}
@@ -74,9 +75,18 @@ class Dzienniczek {
 	return isSet($_SESSION['zalogowany']) ;
   }
   
-  function login($formvars, $user_type) {
+  function login($formvars, $user_type, $user_id) {
 	$_SESSION['zalogowany']=$formvars['Login'];
 	$_SESSION['user_type']=$user_type;
+	$_SESSION['user_id']=$user_id;
+  }
+  
+  function getUserId() {
+	if(!isSet($_SESSION['user_id'])) {
+		return User::$ID_NULL;
+	} else {
+		return $_SESSION['user_type'];
+	}
   }
   
   function getUserType() {
@@ -195,10 +205,11 @@ class Dzienniczek {
   *
   */
   function displayParentsChildren(){
-	  $result=$this->db->getChildren("bezznaczenia");
+      $this->tpl->assign('login', $_SESSION['zalogowany']);
+	  $result=$this->db->getChildrens($this->getUserId());
 	  $number=count($result);
 	  $this->tpl->assign('fig_children', $number);
-	  $this->tpl->assign('childens_name', $result);
+	  $this->tpl->assign('childrens_name', $result);
 	  $this->tpl->display('parents_children.tpl');
 		  
   }

@@ -1,28 +1,26 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 19:31:49
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 18:25:57
          compiled from "..\smarty\dzienniczek\templates\start.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:315995180de9294aea5-97180751%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:97695239f0358faa17-11336929%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9df0f154a53a9fb6a3b3c31b1c20d37fc5bd8d06' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\start.tpl',
-      1 => 1379525349,
+      1 => 1379528746,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1379443498,
+      1 => 1379368230,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '315995180de9294aea5-97180751',
+  'nocache_hash' => '97695239f0358faa17-11336929',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5180de9299bfe6_46652315',
   'variables' => 
   array (
     'isStudent' => 0,
@@ -32,8 +30,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'SCRIPT_NAME' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5239f037525f62_96391150',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5180de9299bfe6_46652315')) {function content_5180de9299bfe6_46652315($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5239f037525f62_96391150')) {function content_5239f037525f62_96391150($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

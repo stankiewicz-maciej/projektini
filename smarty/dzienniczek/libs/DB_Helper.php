@@ -82,14 +82,11 @@ class DB_Helper {
 		return $rs;
 	}
 
-	function getChildren($parentId) {
+	function getChildrens($parentId) {
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		//$children_names=qp_query( select name from student where parentid=costam
 			$children_names=array("Karol", "Mateusz", "Maciek");
 			return $children_names;
-			
-		
-
 	}
 
 	function getMarksForClass($classId) {

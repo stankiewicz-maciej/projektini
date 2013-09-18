@@ -1,28 +1,26 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 19:42:02
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 18:26:04
          compiled from "..\smarty\dzienniczek\templates\parents_children.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:285325239e4053cc4b5-09528284%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:43395239f03caca3c8-77108565%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c285b0002fbe19497046e9d1e1f2264b0a3215f9' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\parents_children.tpl',
-      1 => 1379526121,
+      1 => 1379528070,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\main_template.tpl',
-      1 => 1379443498,
+      1 => 1379368230,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '285325239e4053cc4b5-09528284',
+  'nocache_hash' => '43395239f03caca3c8-77108565',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5239e405486e97_30283729',
   'variables' => 
   array (
     'isStudent' => 0,
@@ -32,8 +30,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'SCRIPT_NAME' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5239f03cc15635_92049433',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5239e405486e97_30283729')) {function content_5239e405486e97_30283729($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5239f03cc15635_92049433')) {function content_5239f03cc15635_92049433($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -52,6 +52,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <link rel="stylesheet" type="text/css" href="css/main_style.css">
 
 	<script type="text/javascript" src="js/start.js"></script> 
+
 
 </head>
 
