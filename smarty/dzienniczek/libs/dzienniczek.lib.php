@@ -213,6 +213,18 @@ class Dzienniczek {
 	  $this->tpl->display('parents_children.tpl');
 		  
   }
+  
+   /**display teachers list
+  *
+  */
+  function displayTeachersList(){
+      $this->tpl->assign('login', $_SESSION['zalogowany']);
+	  $result=$this->db->getTeachersList();
+	  $this->tpl->assign('teachers_list', $result);
+	  $this->tpl->display('teachers_list.tpl');
+		  
+  }
+  
   /* ------------------------------------------------------ END ACTIONS SECTION ------------------------------------------------------*/
   
 }

@@ -10,7 +10,7 @@
 <a href="{$SCRIPT_NAME}?action=userdata"><div class="radius" id="btn1" style="float:left"> <p align="center"> <img src="images/personal.png" align="middle"  /><br/>Twoje dane</p> </div> </a>
 
 {if $isParent}
-    <a href="4.html"><element><div class="radius" id="btn2" style="float:left"></element> <p align="center"> <img src="images/lesson_plan.png" align="middle"  /><br/>Plan lekcji</p> </div> </a>
+    <a href="{$SCRIPT_NAME}?action=teachers_list"><element><div class="radius" id="btn2" style="float:left"></element> <p align="center"> <img src="images/teacher.png" align="middle"  /><br/>Nauczyciele</p> </div> </a>
     <a href="{$SCRIPT_NAME}?action=parents_children"><div class="radius" id="btn3" style="float:left"> <p align="center"> <img src="images/childrens.png" align="middle"  /><br/>Dzieci</p> </div> </a>
 {elseif $isStudent}
     <a href="4.html"><div class="radius" id="btn2" style="float:left"> <p align="center"> <img src="images/lesson_plan.png" align="middle"  /><br/>Plan lekcji</p> </div> </a>
