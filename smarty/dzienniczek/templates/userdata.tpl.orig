@@ -1,0 +1,24 @@
+{extends file="main_template.tpl"}
+{block name=caption}Twoje dane{/block}
+
+{block name=head} {/block}
+
+{block name=body}
+<<<<<<< Updated upstream
+{foreach from=$userData key=key item=item}
+{$key}: {$item} <br/>
+  
+{/foreach}
+=======
+	<table  cellspacing="0" style="border-collapse: collapse;">
+	{foreach $personal_data as $data}
+		{foreach $data as $key => $value}
+			<tr>
+		  		<td class="key_column">{$key}</td>
+		  		<td class="value_column">{$value}</td>
+	  		</tr>
+	  	{/foreach}
+	{/foreach}
+	</table>
+>>>>>>> Stashed changes
+{/block}

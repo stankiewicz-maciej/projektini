@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 21:47:15
-         compiled from "..\smarty\dzienniczek\templates\parents_children.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:43395239f03caca3c8-77108565%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-17 20:47:05
+         compiled from "..\smarty\dzienniczek\templates\userdata.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:134995224ca323d73b8-42672068%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'c285b0002fbe19497046e9d1e1f2264b0a3215f9' => 
+    '62f57c59b2e0ef75c8747986eeccc5a13c53ddc5' => 
     array (
-      0 => '..\\smarty\\dzienniczek\\templates\\parents_children.tpl',
-      1 => 1379533634,
+      0 => '..\\smarty\\dzienniczek\\templates\\userdata.tpl',
+      1 => 1379443498,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
@@ -17,12 +17,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '43395239f03caca3c8-77108565',
+  'nocache_hash' => '134995224ca323d73b8-42672068',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5239f03cc15635_92049433',
+  'unifunc' => 'content_5224ca3245da43_24708670',
   'variables' => 
   array (
     'isStudent' => 0,
@@ -33,7 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5239f03cc15635_92049433')) {function content_5239f03cc15635_92049433($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5224ca3245da43_24708670')) {function content_5224ca3245da43_24708670($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -50,10 +50,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </script>
 <title>Dzienniczek Ucznia</title>
 <link rel="stylesheet" type="text/css" href="css/main_style.css">
-
-	<script type="text/javascript" src="js/start.js"></script> 
-
-
+ 
 </head>
 
 <?php $_smarty_tpl->tpl_vars['isStudent'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isStudent']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
@@ -67,9 +64,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 	  <div style="width:760px; height:100px; margin: 0 auto; overflow:hidden; position:relative">
 			
-			<div id="caption" style="height:44px; margin-top:20px;float:left; margin-left:12px; position:absolute">
-<?php if ('fig_children'==1){?> Moje dziecko
-<?php }else{ ?> Moje dzieci<?php }?></div>
+			<div id="caption" style="height:44px; margin-top:20px;float:left; margin-left:12px; position:absolute">Twoje dane</div>
 
 			<div id="login" style="left:500px; height:60px; margin-top:20px;float:right; margin-left:12px; position:absolute"> <p style="font-size: medium; color:#CCC;">Jesteś zalogowany jako: <?php echo $_smarty_tpl->tpl_vars['login']->value;?>
  </p><a href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
@@ -80,22 +75,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 	<div style="width:760px; height:450px; overflow:hidden; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
 		
-<div align="center">
-<?php  $_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['foo']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['children_names']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
- $_smarty_tpl->tpl_vars['foo']->index=-1;
-foreach ($_from as $_smarty_tpl->tpl_vars['foo']->key => $_smarty_tpl->tpl_vars['foo']->value){
-$_smarty_tpl->tpl_vars['foo']->_loop = true;
- $_smarty_tpl->tpl_vars['foo']->index++;
+
+	<table  cellspacing="0" style="border-collapse: collapse;">
+		<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['personal_data']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-<a href="#.html"><element><div class="radius" id="btn<?php echo $_smarty_tpl->tpl_vars['foo']->index+1;?>
-" style="float:left"></element> <p align="center"> <img src="images/<?php echo $_smarty_tpl->tpl_vars['foo']->index+1;?>
-.png" align="middle" /><br/><?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
-</p> </div> </a>
-<?php } ?>
-
-
-</div>
+			<tr>
+				<td class="key_column"><?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+</td>
+				<td class="value_column"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</td>
+			</tr>
+		<?php } ?>
+	</table>
 
 
 	</div>

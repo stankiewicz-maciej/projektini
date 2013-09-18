@@ -85,7 +85,7 @@ class Dzienniczek {
 	if(!isSet($_SESSION['user_id'])) {
 		return User::$ID_NULL;
 	} else {
-		return $_SESSION['user_type'];
+		return $_SESSION['user_id'];
 	}
   }
   
@@ -209,7 +209,7 @@ class Dzienniczek {
 	  $result=$this->db->getChildrens($this->getUserId());
 	  $number=count($result);
 	  $this->tpl->assign('fig_children', $number);
-	  $this->tpl->assign('childrens_name', $result);
+	  $this->tpl->assign('children_names', $result);
 	  $this->tpl->display('parents_children.tpl');
 		  
   }
