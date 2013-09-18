@@ -47,6 +47,9 @@ if(!$_logged) {
 		case 'userdata':
 				$dzienniczek->displayUserData();
 				break;
+		case 'parents_children':
+				$dzienniczek->displayParentsChildren();
+				break;
 		case 'start':
 		default:
 			$dzienniczek->displayStart();		

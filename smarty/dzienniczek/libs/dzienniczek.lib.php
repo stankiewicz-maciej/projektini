@@ -191,6 +191,17 @@ class Dzienniczek {
 	$this->tpl->assign('message', 'Zostałeś wylogowany!');
 	$this->tpl->display('logout.tpl'); 
   }
+  /**display parent's children
+  *
+  */
+  function displayParentsChildren(){
+	  $result=$this->db->getChildren("bezznaczenia");
+	  $number=count($result);
+	  $this->tpl->assign('fig_children', $number);
+	  $this->tpl->assign('childens_name', $result);
+	  $this->tpl->display('parents_children.tpl');
+		  
+  }
   /* ------------------------------------------------------ END ACTIONS SECTION ------------------------------------------------------*/
   
 }
