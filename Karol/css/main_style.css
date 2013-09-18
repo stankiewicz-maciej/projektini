@@ -20,6 +20,11 @@ body{
   		box-shadow: 2px 4px 6px #555;
   		-moz-box-shadow: 2px 4px 6px #555;
   		-webkit-box-shadow: 2px 4px 6px #555;}
+.shadow_only{
+	
+	-webkit-box-shadow: -5px 9px 5px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    -5px 9px 5px rgba(50, 50, 50, 0.75);
+box-shadow:         -5px 9px 5px rgba(50, 50, 50, 0.75);}
 
 #btn1{
 	background:#06F;
@@ -297,7 +302,16 @@ input[type=radio]:checked + label {
 .dupa_maryna {
 	width: 360px;
 }
-
+.row{
+	width: 360px;
+	height: 45px;
+	border-left: 0px solid #002f6a;
+	border-top: 0px solid #002f6a;
+	border-right: 0px solid #11498e;
+	padding-left: 30px;
+	font-size:22px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+	
 .key_column {
 	width: 360px;
 	height: 45px;

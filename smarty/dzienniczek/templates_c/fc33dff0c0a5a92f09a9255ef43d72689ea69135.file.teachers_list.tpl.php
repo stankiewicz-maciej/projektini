@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 22:57:03
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-19 00:11:48
          compiled from "..\smarty\dzienniczek\templates\teachers_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6650523a12a8e1b0e7-84138801%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fc33dff0c0a5a92f09a9255ef43d72689ea69135' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\teachers_list.tpl',
-      1 => 1379537821,
+      1 => 1379542305,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
@@ -33,7 +33,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_523a12a8f017e2_77122138')) {function content_523a12a8f017e2_77122138($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_523a12a8f017e2_77122138')) {function content_523a12a8f017e2_77122138($_smarty_tpl) {?><?php if (!is_callable('smarty_function_cycle')) include '../smarty/libs/plugins\\function.cycle.php';
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -78,8 +79,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div style="width:760px; height:450px; overflow:hidden; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
 		
 
-	<table  cellspacing="0" style="border-collapse: collapse;">
-    <tr><td class="key_column">Imię</td><td class="key_column">Nazwisko</td><td class="key_column">Przedmiot</td><tr>
+	<table class="shadow_only" cellspacing="0" style="margin:10px;">
+    <tr bgcolor="#4c7cb7"><td class="row">Imię</td><td class="row">Nazwisko</td><td class="row" >Przedmiot</td><tr bgcolor="#BCBCBC">
 		<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['teachers_list']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
  $_smarty_tpl->tpl_vars['item']->index=-1;
@@ -87,11 +88,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['item']->index++;
 ?>
-		<td class="value_column"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
-</td> <?php if (($_smarty_tpl->tpl_vars['item']->index+1)%3==0){?> </tr><tr><?php }?>
+		<td  class="row"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</td> <?php if (($_smarty_tpl->tpl_vars['item']->index+1)%3==0){?> </tr><tr  bgcolor=<?php echo smarty_function_cycle(array('values'=>"#E9E9E9, #BCBCBC"),$_smarty_tpl);?>
+><?php }?>
         <?php } ?>
         </tr>
 		</table>
+
 
 
 	</div>
