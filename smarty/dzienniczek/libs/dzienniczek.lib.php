@@ -244,6 +244,24 @@ class Dzienniczek {
   
   }
   
+  // te funkcje beda duzo duzo bardziej rozbudowane
+  function displayAttendance(){
+  	$this->tpl->display('attendance.tpl');
+  }
+  function displayMarks(){
+  	$this->tpl->display('marks.tpl');
+  }
+  function displayEvents(){
+  	$this->tpl->display('events.tpl');
+  }
+  function displayHomework(){
+  	$this->tpl->display('homework.tpl');
+  }
+  function displayClass(){
+  	$this->tpl->assign('login', $_SESSION['zalogowany']);
+  	$this->tpl->display('class.tpl');
+  }
+  
   /* ------------------------------------------------------ END ACTIONS SECTION ------------------------------------------------------*/
   
 }

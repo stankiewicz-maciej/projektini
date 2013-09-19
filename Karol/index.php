@@ -55,6 +55,22 @@ if(!$_logged) {
 		case 'education':
 			$dzienniczek->displayMySubjectsList();
 			break;
+			// ponizsze bedzie duzo bardziej rozbudowane - narazie to prottopy tych case-ów
+		case 'class':
+			$dzienniczek->displayClass();
+			break;
+		case 'attendance':
+			$dzienniczek->displayAttendance();
+			break;
+		case 'marks':
+			$dzienniczek->displayMarks();
+			break;
+		case 'events':
+			$dzienniczek->displayEvents();
+			break;
+		case 'homework':
+			$dzienniczek->displayHomework();
+			break;
 		case 'start':
 		default:
 			$dzienniczek->displayStart();		

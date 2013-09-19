@@ -12,7 +12,7 @@
 		{foreach $education_list as $education}
 			<tr>
 				<td class="key_column">{$education->getClassName()}</td>
-				<td class="value_column"><a href="{$SCRIPT_NAME}?action=subject&id={$education->getSubjectId()}">{$education->getSubjectName()}</a> </td> 
+				<td class="value_column"><a href="{$SCRIPT_NAME}?action=class">{$education->getSubjectName()}</a> </td> 
 			</tr>
 		{/foreach} 
 	</table>
