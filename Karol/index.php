@@ -52,6 +52,9 @@ if(!$_logged) {
 		case 'teachers_list':
 				$dzienniczek->displayTeachersList();
 				break;
+		case 'education':
+			$dzienniczek->displayMySubjectsList();
+			break;
 		case 'start':
 		default:
 			$dzienniczek->displayStart();		

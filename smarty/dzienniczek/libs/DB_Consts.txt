@@ -1,8 +1,0 @@
-<?php
-
-class DB_Consts
-{
-	const static $GET_STUDENT_CREDENTIALS = "SELECT login, password FROM students";
-}
-
-?>

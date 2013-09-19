@@ -84,15 +84,39 @@ class DB_Helper {
 
 	function getChildrens($parentId) {
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-		//$children_names=qp_query( select name from student where parentid=costam
+		//$children_names=pg_query( select name from student where parentid=costam
 			$children_names=array("Monika", "Mateusz", "Maciek");
 			return $children_names;
 	}
 	function getTeachersList(){
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-		//$children_names=qp_query( select name from student where parentid=costam
+		//$children_names=pg_query( select name from student where parentid=costam
 			$teachers_list=array("Adam", "Adam", "polski", "Ewa", "Bryła", "matematyka", "Karol", "Burek", "angielski", "Bartłomiej", "Szysz", "W-F","Adam", "Adam", "polski", "Ewa", "Bryła", "matematyka", "Karol", "Burek", "angielski", "Bartłomiej", "Szysz", "W-F","Adam", "Adam", "polski", "Ewa", "Bryła", "matematyka", "Karol", "Burek", "angielski", "Bartłomiej", "Szysz", "W-F");
 			return $teachers_list;
+	}
+	function getTeachingList($teacherId){
+		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query = DB_Consts::$GET_TEACHING . $teacherId . ';';
+		$teaching = pg_query($con, $query ) or die("Cannot execute query:");
+		return $teaching;
+	}
+	
+	function getSubjectName($subjectId){
+		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query = DB_Consts::$GET_SUBJECT_NAME . $subjectId . ';';
+		$rs = pg_query($con, $query );
+		$row = pg_fetch_array($rs);
+		$subjectName = $row[0];
+		return $subjectName;
+	}
+	
+	function getClassName($classId){
+		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query = DB_Consts::$GET_CLASS_NAME . $classId . ';';
+		$rs = pg_query($con, $query );
+		$row = pg_fetch_array($rs);
+		$className = $row[0];
+		return $className;
 	}
 
 	function getMarksForClass($classId) {

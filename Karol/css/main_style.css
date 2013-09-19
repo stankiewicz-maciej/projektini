@@ -299,7 +299,7 @@ input[type=radio]:checked + label {
 
 
 <!-- Stylizacja podstawowej dwu kolumnowej tabelki -->
-.dupa_maryna {
+.dummy_style {
 	width: 360px;
 }
 .row{
@@ -337,4 +337,9 @@ input[type=radio]:checked + label {
 tr:last-child
 {
    border-bottom: 1px solid #002f6a;
+}
+
+table tr td a {
+    text-decoration: none;
+    color: white;
 }

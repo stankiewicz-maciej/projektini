@@ -1,6 +1,7 @@
 <?php
 include('DB_Helper.php');
 include('Model/User.php');
+include('Model/Education.php');
 /**
  * dzienniczek application library
  *
@@ -223,6 +224,24 @@ class Dzienniczek {
 	  $this->tpl->assign('teachers_list', $result);
 	  $this->tpl->display('teachers_list.tpl');
 		  
+  }
+  
+  function displayMySubjectsList(){
+  	$this->tpl->assign('login', $_SESSION['zalogowany']);
+  	$teaching=$this->db->getTeachingList($this->getUserId());
+  	
+  	$education_list = array();
+  	
+  	while ($row = pg_fetch_array($teaching)) {
+  		$subject_name = $this->db->getSubjectName($row[0]);
+  		$class_name = $this->db->getClassName($row[1]);
+  		$education = new Education($row[0], $row[1], $subject_name, $class_name);
+  		array_push($education_list, $education);
+  	}
+  	
+  	$this->tpl->assign('education_list', $education_list);
+  	$this->tpl->display('education.tpl');
+  
   }
   
   /* ------------------------------------------------------ END ACTIONS SECTION ------------------------------------------------------*/

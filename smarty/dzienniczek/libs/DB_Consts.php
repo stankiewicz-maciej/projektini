@@ -16,6 +16,10 @@
 		static $GET_PARENT_DATA = 'SELECT * from parents where login=\'';
 		static $GET_TEACHER_DATA = 'SELECT * from teachers where login=\'';
 		
+		static $GET_TEACHING = 'SELECT subject_id, class_id FROM teaching WHERE teacher_id=';
+		static $GET_SUBJECT_NAME = 'SELECT subject_name FROM subjects WHERE subject_id=';
+		static $GET_CLASS_NAME = 'SELECT class_descr FROM classes WHERE class_id=';
+		
 		static $SELECT_ALL = "SELECT * FROM ";
 		
 	}
