@@ -1,13 +1,13 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 22:51:57
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-19 08:10:48
          compiled from "..\smarty\dzienniczek\templates\start.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1785523a2e8d38af76-81494717%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1235523aaf002ac593-19851848%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9df0f154a53a9fb6a3b3c31b1c20d37fc5bd8d06' => 
     array (
       0 => '..\\smarty\\dzienniczek\\templates\\start.tpl',
-      1 => 1379541839,
+      1 => 1379578233,
       2 => 'file',
     ),
     '8e76363a39d719c57d603896625287a05dd121bc' => 
@@ -17,10 +17,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1785523a2e8d38af76-81494717',
+  'nocache_hash' => '1235523aaf002ac593-19851848',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_523aaf00424376_32565992',
   'variables' => 
   array (
     'isStudent' => 0,
@@ -30,10 +32,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'SCRIPT_NAME' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_523a2e8d4908d8_03756104',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_523a2e8d4908d8_03756104')) {function content_523a2e8d4908d8_03756104($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_523aaf00424376_32565992')) {function content_523aaf00424376_32565992($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -78,6 +78,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div style="width:760px; height:450px; overflow:hidden; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
 		
 
+<?php $_smarty_tpl->tpl_vars['isTutor'] = new Smarty_variable((($tmp = @$_smarty_tpl->tpl_vars['isTutor']->value)===null||$tmp==='' ? false : $tmp), null, 0);?>
+
 <a href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
 ?action=userdata"><div class="radius" id="btn1" style="float:left"> <p align="center"> <img src="images/personal.png" align="middle"  /><br/>Twoje dane</p> </div> </a>
 
@@ -91,11 +93,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <a href="6.html"><div class="radius" id="btn3" style="float:left"> <p align="center"> <img src="images/marks.png" align="middle"  /><br/>Oceny</p> </div> </a>
 	<a href="3.html"><div class="radius" id="btn4" style="float:left"> <p align="center"> <img src="images/homeworks.png" align="middle"  /><br/> Prace domowe</p> </div> </a>
 <?php }elseif($_smarty_tpl->tpl_vars['isTeacher']->value){?>
-    <a href="2.html"><div class="radius" id="btn2" style="float:left"> <p align="center"> <img src="images/marks.png" align="middle"  /><br/>Oceny</p> </div> </a>
-    <a href="3.html"><div class="radius" id="btn3" style="float:left"> <p align="center"> <img src="images/homeworks.png" align="middle"  /><br/> Prace domowe</p> </div> </a>
-    <a href="4.html"><div class="radius" id="btn4" style="float:left"> <p align="center"> <img src="images/lesson_plan.png" align="middle"  /><br/>Plan lekcji</p> </div> </a>
-    <a href="5.html"><div class="radius" id="btn5" style="float:left"> <p align="center"> <img src="images/director_issues.png" align="middle"  /><br/>Zarządzaj szkołą</p> </div> </a>
-    <a href="6.html"><div class="radius" id="btn6" style="float:left"> <p align="center"> <img src="images/childrens.png" align="middle"  /><br/>Dzieci</p> </div> </a>
+    <a href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
+?action=education"><div class="radius" id="btn2" style="float:left"> <p align="center"> <img src="images/education.png" align="middle"  /><br/>Edukacja</p> </div> </a>
+    <a href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
+?action=lesson_plan"><div class="radius" id="btn3" style="float:left"> <p align="center"> <img src="images/lesson_plan.png" align="middle"  /><br/>Plan lekcji</p> </div> </a>
+    <?php if ($_smarty_tpl->tpl_vars['isTutor']->value){?>
+    	<a href="<?php echo $_smarty_tpl->tpl_vars['SCRIPT_NAME']->value;?>
+?action=tutor"><div class="radius" id="btn4" style="float:left"> <p align="center"> <img src="images/tutor.png" align="middle"  /><br/>Wychowawstwo</p> </div> </a>
+	<?php }?>
 <?php }?>
 
 
