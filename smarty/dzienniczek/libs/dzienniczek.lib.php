@@ -2,6 +2,8 @@
 include('DB_Helper.php');
 include('Model/User.php');
 include('Model/Education.php');
+include('Model/Absence.php');
+include('Model/AbsenceDetails.php');
 /**
  * dzienniczek application library
  *
@@ -149,6 +151,40 @@ class Dzienniczek {
 	}
   }
   
+  function getCurrentWeek() {
+  	$currentWeek = array();
+  	
+  	$mon= date('m/d', strtotime('Monday this week'));
+  	$tue= date('m/d', strtotime('Tuesday this week'));
+  	$wed= date('m/d', strtotime('Wednesday this week'));
+  	$thu= date('m/d', strtotime('Thursday this week'));
+  	$fri= date('m/d', strtotime('Friday this week'));
+  	
+  	array_push($currentWeek, $mon);
+  	array_push($currentWeek, $tue);
+  	array_push($currentWeek, $wed);
+  	array_push($currentWeek, $thu);
+  	array_push($currentWeek, $fri);
+  	return $currentWeek;
+  }
+  
+  function getWeek($date) {
+  	$currentWeek = array();
+  	 
+  	$mon= date('m/d', strtotime('$date Monday'));
+  	$tue= date('m/d', strtotime('$date Tuesday'));
+  	$wed= date('m/d', strtotime('$date Wednesday'));
+  	$thu= date('m/d', strtotime('$date Thursday'));
+  	$fri= date('m/d', strtotime('$date Friday'));
+  	 
+  	array_push($currentWeek, $mon);
+  	array_push($currentWeek, $tue);
+  	array_push($currentWeek, $wed);
+  	array_push($currentWeek, $thu);
+  	array_push($currentWeek, $fri);
+  	return $currentWeek;
+  }
+  
   /* ------------------------------------------------------ BEGIN ACTIONS SECTION ------------------------------------------------------ */
   /**
   * display the login form
@@ -245,7 +281,45 @@ class Dzienniczek {
   }
   
   // te funkcje beda duzo duzo bardziej rozbudowane
-  function displayAttendance(){
+  function displayAttendance($classId, $date){
+  	$currentWeek = array();
+  	if($date == null)
+  	{
+  		$currentWeek = $this->getCurrentWeek();
+  	} 
+  	else
+  	{
+  		$currentWeek = $this->getWeek($date);
+  	}
+  	// fake data
+  	$absenceList1 = array(new Absence('09/19', 1), new Absence('09/19', 4), new Absence('09/20', 1));
+  	$absenceList2 = array(new Absence('09/18', 5));
+  	/*$absence1 = new Absence('09/19', 1);
+  	$absence2 = new Absence('09/19', 4);
+  	$absence3 = new Absence('09/20', 1);
+  	$absence4 = new Absence('09/18', 5);*/
+  	
+  	$absenceDetails1 = new AbsenceDetails();
+  	$absenceDetails1->setUserId(1);
+  	$absenceDetails1->setUserName('Karol');
+  	$absenceDetails1->setUserSurname('Zurek');
+  	$absenceDetails1->setAbscences($absenceList1);
+  	
+  	$absenceDetails2 = new AbsenceDetails();
+  	$absenceDetails2->setUserId(2);
+  	$absenceDetails2->setUserName('Maciej');
+  	$absenceDetails2->setUserSurname('Stankiewicz');
+  	$absenceDetails2->setAbscences($absenceList2);
+  	
+  	$absenceDetails3 = new AbsenceDetails();
+  	$absenceDetails3->setUserId(3);
+  	$absenceDetails3->setUserName('Bartlomiej');
+  	$absenceDetails3->setUserSurname('Szysz');
+  	
+  	//$studentAttendance = array("Karol Zurek", "Maciej Stankiewicz", "Monika Zieba");
+  	$studentAttendance = array($absenceDetails1, $absenceDetails2, $absenceDetails3);
+  	$this->tpl->assign('currentWeek', $currentWeek);
+  	$this->tpl->assign('studentAttendance', $studentAttendance);
   	$this->tpl->display('attendance.tpl');
   }
   function displayMarks(){

@@ -60,7 +60,7 @@ if(!$_logged) {
 			$dzienniczek->displayClass();
 			break;
 		case 'attendance':
-			$dzienniczek->displayAttendance();
+			$dzienniczek->displayAttendance(1,null);
 			break;
 		case 'marks':
 			$dzienniczek->displayMarks();
