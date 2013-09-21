@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+body{background-image:url(tlo.png);}
+.win{background-color:#0033FF; color:#FFF;}
+.win2{background-color:#0033FF; color:#FFF; text-align:right;}
+div#log{ background-color:#0033FF; color:#FFF; text-align:right; font-size:xx-small; height: 15px;}
+a#out{text-decoration:none;}
+a:link{text-decoration:none;}
+a:visited { color:text-decoration: none ; color:#FFFFFF;}
+a#out:hover{ color:#FF0000; text-decoration:none}

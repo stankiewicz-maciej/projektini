@@ -1,6 +1,6 @@
 
 CREATE TABLE version(tid serial PRIMARY KEY, dbversion integer);
-INSERT INTO version(dbversion) VALUES(9);
+INSERT INTO version(dbversion) VALUES(10);
 
 CREATE TABLE "parents"("parent_id" serial primary key,"name" varchar,"surname" varchar,"address" varchar,"tel" int,"email" varchar,"login" varchar(20),"password" varchar(20));
 
@@ -31,9 +31,10 @@ CREATE TABLE "marks"("student_id" int references students(stud_id),"subject_id" 
 
 CREATE TABLE "absence"("student_id" int references students(stud_id),"abs_date" date,"lesson_number" int);
 
-INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'adamo', 'adamo123' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'adam', 'Hasło' );
 
-INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Anna', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'aneczka', '1111' );
+
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'ewa', 'Hasło' );
 
 
 
@@ -80,8 +81,13 @@ INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,1,1);
 INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,2,1);
 
 
-INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Okraska', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'karolo', 'okrasa');
-INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Zurek', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 1, 1, 'karolz', 'zurek');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'karolo', 'okrasa');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'monikaz', 'okrasa');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'karolz', 'okrasa');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'arturi', 'okrasa');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'maciejs', 'okrasa');
+
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Miła', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 1, 2, 'mateuszs', 'zurek');
 
 
 INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 2, 5, 1);

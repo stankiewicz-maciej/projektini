@@ -4,7 +4,7 @@ include('DB_Consts.php');
 class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
-	var $DB_VERSION = 9;
+	var $DB_VERSION = 10;
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
 

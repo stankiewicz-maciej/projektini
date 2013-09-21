@@ -1,0 +1,5 @@
+Opis bazy do szybkiej weryfikacji. Uzepe³nienie jej do celów testowcyh.
+
+Rodzic(1) adam: 2 dzieci karol karol
+Rdzic(2) anna: 1 dziecko Monika
+Rodzic(3) ewa: 5 dzieci Maciek Monika Mateusz Bartek Artur
