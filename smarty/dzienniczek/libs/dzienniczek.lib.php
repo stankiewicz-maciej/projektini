@@ -18,6 +18,8 @@ class Dzienniczek {
   var $error = null;
   // temporary password file
   var $fd = null;
+  
+  var $daysOfWeek = array("Poniedzialek", "Wtorek", "Sroda", "Czwartek", "Piatek");
 
   /**
   * class constructor
@@ -154,11 +156,11 @@ class Dzienniczek {
   function getCurrentWeek() {
   	$currentWeek = array();
   	
-  	$mon= date('m/d', strtotime('Monday this week'));
-  	$tue= date('m/d', strtotime('Tuesday this week'));
-  	$wed= date('m/d', strtotime('Wednesday this week'));
-  	$thu= date('m/d', strtotime('Thursday this week'));
-  	$fri= date('m/d', strtotime('Friday this week'));
+  	$mon= date('y-m-d', strtotime('Monday this week'));
+  	$tue= date('y-m-d', strtotime('Tuesday this week'));
+  	$wed= date('y-m-d', strtotime('Wednesday this week'));
+  	$thu= date('y-m-d', strtotime('Thursday this week'));
+  	$fri= date('y-m-d', strtotime('Friday this week'));
   	
   	array_push($currentWeek, $mon);
   	array_push($currentWeek, $tue);
@@ -171,11 +173,11 @@ class Dzienniczek {
   function getWeek($date) {
   	$currentWeek = array();
   	 
-  	$mon= date('m/d', strtotime('$date Monday'));
-  	$tue= date('m/d', strtotime('$date Tuesday'));
-  	$wed= date('m/d', strtotime('$date Wednesday'));
-  	$thu= date('m/d', strtotime('$date Thursday'));
-  	$fri= date('m/d', strtotime('$date Friday'));
+  	$mon= date('y-m-d', strtotime('$date Monday'));
+  	$tue= date('y-m-d', strtotime('$date Tuesday'));
+  	$wed= date('y-m-d', strtotime('$date Wednesday'));
+  	$thu= date('y-m-d', strtotime('$date Thursday'));
+  	$fri= date('y-m-d', strtotime('$date Friday'));
   	 
   	array_push($currentWeek, $mon);
   	array_push($currentWeek, $tue);
@@ -183,6 +185,40 @@ class Dzienniczek {
   	array_push($currentWeek, $thu);
   	array_push($currentWeek, $fri);
   	return $currentWeek;
+  }
+  
+  function prepareAbsenceList($userId, $classId, $currentWeek)
+  {
+  	$absenceList = array();
+  	for($i = 0 ; $i < sizeof( $this->daysOfWeek, 0); $i++)
+  	{
+  		if((time()) >= strtotime($currentWeek[$i]))
+  		{
+	  		for($j = 0; $j < 8; $j++)
+	  		{
+	  			array_push($absenceList, new Absence($currentWeek[$i], $j, '-'));
+	  		}
+  		}
+  		else 
+  		{
+  			for($j = 0; $j < 8; $j++)
+  			{
+  				array_push($absenceList, new Absence($currentWeek[$i], $j, ''));
+  			}
+  		}
+  		
+  		$absences = $this->db->getAbsences($userId, $currentWeek[$i]);
+  		
+  		while ($row = pg_fetch_array($absences)) {
+  			$absenceList[$row[0]] = '|';
+  		}
+  		
+  	}
+  	$absenceList1 = array(new Absence('09/19', 1, '-'), new Absence('09/19', 2, '-'), new Absence('09/19', 3, '-'),
+  			new Absence('09/19', 4, '-'), new Absence('09/19', 5, '|'),new Absence('09/19', 6, '|'), new Absence('09/19', 7, '-'),
+  			new Absence('09/19', 8, '/')
+  	);
+  	return $absenceList1;
   }
   
   /* ------------------------------------------------------ BEGIN ACTIONS SECTION ------------------------------------------------------ */
@@ -292,8 +328,9 @@ class Dzienniczek {
   		$currentWeek = $this->getWeek($date);
   	}
   	// fake data
-  	$absenceList1 = array(new Absence('09/19', 1), new Absence('09/19', 4), new Absence('09/20', 1));
-  	$absenceList2 = array(new Absence('09/18', 5));
+  	
+  	$absenceList1 = $this->prepareAbsenceList(1, $classId);
+  	//$absenceList2 = array(new Absence('09/18', 5));
   	/*$absence1 = new Absence('09/19', 1);
   	$absence2 = new Absence('09/19', 4);
   	$absence3 = new Absence('09/20', 1);
@@ -309,7 +346,7 @@ class Dzienniczek {
   	$absenceDetails2->setUserId(2);
   	$absenceDetails2->setUserName('Maciej');
   	$absenceDetails2->setUserSurname('Stankiewicz');
-  	$absenceDetails2->setAbscences($absenceList2);
+  	//$absenceDetails2->setAbscences($absenceList2);
   	
   	$absenceDetails3 = new AbsenceDetails();
   	$absenceDetails3->setUserId(3);

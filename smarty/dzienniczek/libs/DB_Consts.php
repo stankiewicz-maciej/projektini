@@ -20,7 +20,7 @@
 		static $GET_SUBJECT_NAME = 'SELECT subject_name FROM subjects WHERE subject_id=';
 		static $GET_CLASS_NAME = 'SELECT class_descr FROM classes WHERE class_id=';
 		static $GET_PARENTS_CHILDREN = 'SELECT login, name FROM students WHERE parent_id=';
-		static $GET_STUDENT_NAME = 'select name FROM students WHERE login=';
+		static $GET_STUDENT_NAME = 'select name FROM students WHERE login=\'';
 		
 		static $SELECT_ALL = "SELECT * FROM ";
 		

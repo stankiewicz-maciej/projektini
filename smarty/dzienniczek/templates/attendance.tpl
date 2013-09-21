@@ -18,9 +18,16 @@
 	    </tr>
 	    
 	    {foreach $studentAttendance as $attend}
-		    <tr bgcolor={cycle values="#11498e, #002f6a"} style="border-top: 1px solid #11498e; border-bottom: 1px solid #11498e;">
-		    	<td class="attendance_row">{$attend@iteration}</td>
-		    	<td class="attendance_row">{$attend->getUserName()} {$attend->getUserSurname()}</td>
+		    <tr bgcolor={cycle values="#11498e, #002f6a"}>
+		    	<td class="attendance_row">{$attend@iteration}.</td>
+		    	<td class="attendance_row" style="text-align:left;">{$attend->getUserName()} {$attend->getUserSurname()}</td>
+		    	{foreach $attend->getAbsences() as $absence}
+		    		{if $absence->getSymbol() eq '/'}
+		    			<td class="attendance_row" bgcolor="grey"/>
+		    		{else}
+		    			<td class="attendance_row">{$absence->getSymbol()}</td>
+		    		{/if}
+		    	{/foreach}
 		    </tr>
 		{/foreach} 
 		

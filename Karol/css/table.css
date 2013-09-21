@@ -14,13 +14,16 @@
 
 .attendance_row{
 	min-width: 10px;
-	height: 30px;
-	border-left: 0px solid #11498e;
-	border-right: 0px solid #11498e;
+	height: 25px;
+	border-left: 0px solid #4c7cb7;
+	border-right: 1px solid #4c7cb7;
+	border-top: 1px solid #4c7cb7;
+	border-bottom: 1px solid #4c7cb7;
 	padding-left: 2px;
 	font-size:12px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	white-space: nowrap;
+	text-align: center;
 }
 	
 table.attendance_table tr:first-child td:first-child {

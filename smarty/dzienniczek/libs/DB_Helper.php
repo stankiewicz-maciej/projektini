@@ -92,9 +92,13 @@ class DB_Helper {
 	}
 	function getChildName($studentId){
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-		$query=DB_Consts::$GET_STUDENT_NAME. $studentId. ';';
+		$query=DB_Consts::$GET_STUDENT_NAME. $studentId. '\';';
 		$rs=pg_query($con, $query);
-		$name=pg_fetch_row($rs);
+		$name ='Brak Imienia';
+		if($rs != FALSE) {
+			$row=pg_fetch_row($rs);
+			$name = $row[0];
+		}
 		return $name;
 		}
 		

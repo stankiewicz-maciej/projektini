@@ -4,11 +4,13 @@
 	{
 		private $date;
 		private $lessonNumber;
+		private $symbol;
 		
-		public function __construct($date, $lessonNumber)
+		public function __construct($date, $lessonNumber, $symbol)
 		{
 			$this->date = $date;
 			$this->lessonNumber = $lessonNumber;
+			$this->symbol = $symbol;
 		}
 		
 		public function setDate($date)
@@ -29,6 +31,16 @@
 		public function getLessonNumber()
 		{
 			return $this->lessonNumber;
+		}
+		
+		public function setSymbol($symbol)
+		{
+			$this->symbol = $symbol;
+		}
+		
+		public function getSymbol()
+		{
+			return $this->symbol;
 		}
 	}
 

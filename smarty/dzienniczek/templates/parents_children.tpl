@@ -11,7 +11,7 @@
 {block name=body}
 <div align="center">
 {foreach from=$children_names key=key item=foo}
-<a href="{$SCRIPT_NAME}?action=mychild?id={$key}"><element><div class="radius" id="btn{$foo@index+1}" style="float:left"></element> <p align="center"> <img src="images/{$foo@index+1}.png" align="middle" /><br/>{$foo}</p> </div> </a>
+<a href="{$SCRIPT_NAME}?action=mychild&id={$key}"><element><div class="radius" id="btn{$foo@index+1}" style="float:left"></element> <p align="center"> <img src="images/{$foo@index+1}.png" align="middle" /><br/>{$foo}</p> </div> </a>
 {/foreach}
 
 
