@@ -1,5 +1,5 @@
 {extends file="main_template.tpl"}
-{block name=caption}Klasa IIIA{/block}
+{block name=caption}Klasa {$className}{/block}
 
 {block name=head} 
 	<link rel="stylesheet" type="text/css" href="css/menu_style.css">
@@ -31,12 +31,19 @@
 	<p>This is some default tab content, embedded directly inside this space and not via Ajax. It can be shown when no tabs are automatically selected, or associated with a certain tab, in this case, the first tab.</p>
 </div>
 
+<div id ="similar" style=" position: relative; float: left;  margin-bottom: 1em; padding: 10px; top: 100px; width: auto;">
+    - oznacza obecnosc ucznia <br>
+    | oznacza nieobecnosc ucznia</div>
 
 
 <script type="text/javascript">
 	var target;
 	var page_request;
 	var loader_content = "<img src='images/ajax-loader.gif' style='margin-left:300px; margin-top:50px; ' /> Trwa pobieranie danych...Proszę czekać...";
+
+	$(document).ready(function(){
+		sendRequest('{$SCRIPT_NAME}?action=attendance&classId={$classId}', 'targetdiv', 'attendMenu')
+	});
 	
 	function sendRequest(scriptFile, targetElement, activeMenu)
 	{	

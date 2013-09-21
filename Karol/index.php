@@ -60,10 +60,10 @@ if(!$_logged) {
 			break;
 			// ponizsze bedzie duzo bardziej rozbudowane - narazie to prottopy tych case-ów
 		case 'class':
-			$dzienniczek->displayClass();
+			$dzienniczek->displayClass($_REQUEST['classId'], $_REQUEST['className']);
 			break;
 		case 'attendance':
-			$dzienniczek->displayAttendance(1,null);
+			$dzienniczek->displayAttendance($_REQUEST['classId'],null);
 			break;
 		case 'marks':
 			$dzienniczek->displayMarks();
