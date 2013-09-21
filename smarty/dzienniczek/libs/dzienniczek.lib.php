@@ -341,9 +341,8 @@ class Dzienniczek {
   */
   function displayPvMyChild($id){
 	$this->tpl->assign('login', $_SESSION['zalogowany']);
-	 $name=$this->db->getChildName($id); 
-	  
-	 $this->tpl->assign('name', $name);
+	$name=$this->db->getChildName($id); 
+	$this->tpl->assign('name', $name);
 	$this->tpl->display('pv_child_view.tpl');
 	  
   }
