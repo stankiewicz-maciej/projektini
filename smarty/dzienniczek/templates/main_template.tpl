@@ -9,12 +9,11 @@
 	$(document).ready(function(){
 		$("#caption").delay(0).animate({ 
 			top: "+=60px",}, 1500 );
-			
+					
 		$('#back').click(function(){
         parent.history.back();
-        return false;
-    });
-	});
+        return false; });
+		});
 	
 	
 </script>
@@ -33,7 +32,7 @@
 	<div style="width:100%; height:100px; overflow:hidden; margin: 0 auto; background-color:#333">
       
 	  <div style="width:760px; height:100px; margin: 0 auto; overflow:hidden; position:relative">
-			<img id="back" src="images/left_grey.png" align="left"/> <a href="{$SCRIPT_NAME}?action=start"><img src="images/home.png" align="left"/></a>
+			<img id="back" src="images/left_grey.png" align="left"/> <a href="{$SCRIPT_NAME}?action=start"><img id="home" src="images/home.png" align="left"/></a>
 			<div id="caption" style="height:44px; margin-top:40px;float:left; margin-left:12px; position:absolute">{block name=caption}{/block}</div>
 
 			<div id="login" style="left:500px; height:60px; margin-top:20px;float:right; margin-left:12px; position:absolute">{block name=log} <p style="font-size: medium; color:#CCC;">Jesteś zalogowany jako: {$login} </p><a href="{$SCRIPT_NAME}?action=logout"> Wylogowanie </a>{/block} </div>

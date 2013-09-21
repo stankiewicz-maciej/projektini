@@ -4,7 +4,7 @@ include('DB_Consts.php');
 class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
-	var $DB_VERSION = 10;
+	var $DB_VERSION = 11;
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
 
@@ -84,10 +84,20 @@ class DB_Helper {
 
 	function getChildrens($parentId) {
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-		//$children_names=pg_query( select name from student where parentid=costam
-			$children_names=array("Monika", "Mateusz", "Maciek");
-			return $children_names;
+		$query=DB_Consts::$GET_PARENTS_CHILDREN. $parentId. ';';
+			$rs=pg_query($con, $query);
+			while($tmp=pg_fetch_row($rs)){
+				$children["$tmp[0]"]="$tmp[1]";}
+			 return $children;
 	}
+	function getChildName($studentId){
+		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query=DB_Consts::$GET_STUDENT_NAME. $studentId. ';';
+		$rs=pg_query($con, $query);
+		$name=pg_fetch_row($rs);
+		return $name;
+		}
+		
 	function getTeachersList(){
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		//$children_names=pg_query( select name from student where parentid=costam

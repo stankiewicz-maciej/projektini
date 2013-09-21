@@ -39,6 +39,9 @@ if(!$_logged) {
 	}
 } else {
 	switch($_action) {
+		case 'mychild':
+			$dzienniczek->displayPvMyChild($id);
+			break;
 		case 'logout':
 			$resultMessage = $dzienniczek->logout();
 			$dzienniczek->displayLogout($resultMessage);
