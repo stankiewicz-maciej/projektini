@@ -177,9 +177,9 @@ class DB_Helper {
 		return $rs;
 	}
 
-	function getClassId($studentId){
+	function getClassId($login){
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-		$query = DB_Consts::$GET_CLASS_ID . $studentId . '\';';
+		$query = DB_Consts::$GET_CLASS_ID . $login . '\';';
 		$rs = pg_query($con, $query );
 		$row = pg_fetch_array($rs);
 		$classId = $row[0];
@@ -310,16 +310,21 @@ class DB_Helper {
 		return $rs;
 
 	}
-	function getTimetable($login, $day){
-		$classId=$this->getClassId($login);
+	function getTimetable($classId, $day){
+		
 		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-		$query=
-		
+		$query='SELECT s.subject_name from subjects s, timetable t where class_id ='.$classId.' AND t.day_id ='.$day.' AND s.subject_id = t.subject_id order by lesson_id;';
+		$rs=pg_query($con, $query);
+		$index=0;
+		while($result=pg_fetch_row($rs)){
+			$day_plan[$index]=$result[0];
+			$index++;
+		}
+		for($i=$index; $i<8; $i++){
+			$day_plan[$i]='---';}
 		pg_close($con);
-		return 0;
-		
-		
-	}
+		return $day_plan;
+		}
   
 }
 

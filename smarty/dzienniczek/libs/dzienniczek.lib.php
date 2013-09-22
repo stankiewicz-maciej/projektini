@@ -434,6 +434,37 @@ class Dzienniczek {
   $this->tpl->assign('absences', $absences);
 	$this->tpl->display('absence.tpl');
   }
+  /**
+  *display timetable for class
+  *
+  */
+  function displayTimetable($login){
+	$this->tpl->assign('login', $_SESSION['zalogowany']);	
+  	$classId=$this->db->getClassId($login);  
+  	$className=$this->db->getClassName($classId);
+	$monday=$this->db->getTimetable($classId, 1);
+	$tuesday=$this->db->getTimetable($classId, 2);
+	$wednesday=$this->db->getTimetable($classId, 3);
+	$thursday=$this->db->getTimetable($classId, 4);
+	$friday=$this->db->getTimetable($classId, 5);
+	$number=array( 1,2,3,4,5,6,7,8);
+	$time= array('8:00-8:45', '8:50-8:35', '9:45-10:30', '10:45-11:30', '11:40-12:25', '12:30-13:15', '13:30-14:15', '14:20-15:05');
+	
+	$this->tpl->assign('number', $number);
+	$this->tpl->assign('time', $time);
+	$this->tpl->assign('class', $className);
+	$this->tpl->assign('monday', $monday);
+	$this->tpl->assign('tuesday', $tuesday);
+	$this->tpl->assign('wednesday', $wednesday);
+	$this->tpl->assign('thursday', $thursday);
+	$this->tpl->assign('friday', $friday);
+	
+	$this->tpl->display('timetable_view.tpl');
+	 
+  
+	  
+  }
+  
   /* ------------------------------------------------------ END ACTIONS SECTION ------------------------------------------------------*/
   
 }

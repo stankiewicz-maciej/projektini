@@ -39,6 +39,9 @@ if(!$_logged) {
 	}
 } else {
 	switch($_action) {
+		case 'timetable':
+			$dzienniczek->displayTimetable($_REQUEST['id']);
+			break;
 		case 'absence':
 			$dzienniczek->displayAbsences($_REQUEST['id']);
 			break;
