@@ -29,6 +29,7 @@
 		static $GET_LESSONS_ON_DAY_COUNT = 'SELECT count(*) FROM timetable WHERE class_id=%u AND day_id=%u;';
 		static $GET_STUDENT_ABSENCES = 'SELECT lesson_number FROM absence WHERE student_id=%u AND abs_date=\'%s\'::timestamp without time zone;';
 		static $GET_STUDENTS_BY_CLASS = 'SELECT stud_id, name, surname FROM students WHERE class_id=%u;';
+		static $GET_DAYS_LESSONS= 'SELECT ';
 
 		
 		static $SELECT_ALL = "SELECT * FROM ";

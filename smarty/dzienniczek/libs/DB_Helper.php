@@ -216,7 +216,8 @@ class DB_Helper {
 		$work[$index]=$result[0];
 		$work[$index+1]=$result[1];
 		$work[$index+2]=$result[2];
-		$index+=3;
+		$work[$index+3]=$this->showDay($result[2]);
+		$index+=4;
 		}
 		pg_close($con);
 	return $work;
@@ -308,6 +309,16 @@ class DB_Helper {
 		
 		return $rs;
 
+	}
+	function getTimetable($login, $day){
+		$classId=$this->getClassId($login);
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query=
+		
+		pg_close($con);
+		return 0;
+		
+		
 	}
   
 }
