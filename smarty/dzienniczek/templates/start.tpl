@@ -17,7 +17,7 @@
     <a href="{$SCRIPT_NAME}?action=teachers_list"><element><div class="radius" id="btn2" style="float:left"></element> <p align="center"> <img src="images/teacher.png" align="middle"  /><br/>Nauczyciele</p> </div> </a>
     <a href="{$SCRIPT_NAME}?action=parents_children"><div class="radius" id="btn3" style="float:left"> <p align="center"> <img src="images/childrens.png" align="middle"  /><br/>Dzieci</p> </div> </a>
 {elseif $isStudent}
-    <a href="4.html"><div class="radius" id="btn2" style="float:left"> <p align="center"> <img src="images/lesson_plan.png" align="middle"  /><br/>Plan lekcji</p> </div> </a>
+    <a href="{$SCRIPT_NAME}?action=timetable&id={$login}"><div class="radius" id="btn2" style="float:left"> <p align="center"> <img src="images/lesson_plan.png" align="middle"  /><br/>Plan lekcji</p> </div> </a>
     <a href="6.html"><div class="radius" id="btn3" style="float:left"> <p align="center"> <img src="images/marks.png" align="middle"  /><br/>Oceny</p> </div> </a>
 	<a href="{$SCRIPT_NAME}?action=homeworks&id={$login}"><div class="radius" id="btn4" style="float:left"> <p align="center"> <img src="images/homeworks.png" align="middle"  /><br/> Prace domowe</p> </div> </a>
     <a href="{$SCRIPT_NAME}?action=news&id={$login}"><div class="radius" id="btn5" style="float:left"> <p align="center"> <img src="images/news.png" align="middle"  /><br/> Aktualności</p> </div> </a>

@@ -308,9 +308,21 @@ input[type=radio]:checked + label {
 	border-left: 0px solid #002f6a;
 	border-top: 0px solid #002f6a;
 	border-right: 0px solid #11498e;
-	padding-left: 30px;
+	padding-left: 10px;
 	font-size:22px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+
+.row1{
+	width:100%;
+	height:40px;
+	border-left: 0px solid #002f6a;
+	border-top: 0px solid #002f6a;
+	border-right: 0px solid #11498e;
+	padding-left: 10px;
+	font-size:15px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+
+
 	
 .key_column {
 	width: 360px;

@@ -459,7 +459,7 @@ class Dzienniczek {
 	$this->tpl->assign('thursday', $thursday);
 	$this->tpl->assign('friday', $friday);
 	
-	$this->tpl->display('timetable_view.tpl');
+	$this->tpl->display('timetable.tpl');
 	 
   
 	  
