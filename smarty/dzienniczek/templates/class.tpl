@@ -8,7 +8,7 @@
 {block name=body}
 <nav id="navigationMenu" style="z-index: 1000; position: fixed; ">
 	<ul>
-		<li id="attendMenu" class='active'> <a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=attendance', 'targetdiv', 'attendMenu')" ><span>Frekwencja</span></a></li>
+		<li id="attendMenu" class='active'> <a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=attendance&classId={$classId}', 'targetdiv', 'attendMenu')" ><span>Frekwencja</span></a></li>
 		<li id="marksMenu"><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=marks', 'targetdiv', 'marksMenu')" ><span>Oceny</span></a>
 			<ul>
 				<li><a href="#">Matematyka</a></li>
@@ -30,11 +30,6 @@
 <div id="targetdiv" style="position:relative; border:1px solid #11498e; margin-bottom: 1em; padding: 0px; top: 100px; overflow: auto;">
 	<p>This is some default tab content, embedded directly inside this space and not via Ajax. It can be shown when no tabs are automatically selected, or associated with a certain tab, in this case, the first tab.</p>
 </div>
-
-<div id ="similar" style=" position: relative; float: left;  margin-bottom: 1em; padding: 10px; top: 100px; width: auto;">
-    - oznacza obecnosc ucznia <br>
-    | oznacza nieobecnosc ucznia</div>
-
 
 <script type="text/javascript">
 	var target;

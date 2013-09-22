@@ -20,6 +20,7 @@ class Dzienniczek {
   var $fd = null;
   
   var $daysOfWeek = array("Poniedzialek", "Wtorek", "Sroda", "Czwartek", "Piatek");
+  var $lastAttendanceDate = 'asdsa';
 
   /**
   * class constructor
@@ -155,7 +156,6 @@ class Dzienniczek {
   
   function getCurrentWeek() {
   	$currentWeek = array();
-  	
   	$mon= date('y-m-d', strtotime('Monday this week'));
   	$tue= date('y-m-d', strtotime('Tuesday this week'));
   	$wed= date('y-m-d', strtotime('Wednesday this week'));
@@ -170,14 +170,26 @@ class Dzienniczek {
   	return $currentWeek;
   }
   
-  function getWeek($date) {
+  function getWeek($select, $date) {
   	$currentWeek = array();
-  	 
-  	$mon= date('y-m-d', strtotime('$date Monday'));
-  	$tue= date('y-m-d', strtotime('$date Tuesday'));
-  	$wed= date('y-m-d', strtotime('$date Wednesday'));
-  	$thu= date('y-m-d', strtotime('$date Thursday'));
-  	$fri= date('y-m-d', strtotime('$date Friday'));
+  	
+  	$currentDate;
+  	if($select == 'next')
+  	{
+  		$mon= date('y-m-d', strtotime($date . 'next week'));
+  		$tue= date('y-m-d', strtotime($date .' next week + 1 day'));
+  		$wed= date('y-m-d', strtotime($date .' next week + 2 day'));
+  		$thu= date('y-m-d', strtotime($date .' next week + 3 day'));
+  		$fri= date('y-m-d', strtotime($date .' next week + 4 day'));
+  	}
+  	else 
+  	{
+  		$mon= date('y-m-d', strtotime($date . 'last week'));
+  		$tue= date('y-m-d', strtotime($date . 'last week + 1 day'));
+  		$wed= date('y-m-d', strtotime($date . 'last week + 2 day'));
+  		$thu= date('y-m-d', strtotime($date . 'last week + 3 day'));
+  		$fri= date('y-m-d', strtotime($date . 'last week + 4 day'));
+  	}
   	 
   	array_push($currentWeek, $mon);
   	array_push($currentWeek, $tue);
@@ -202,7 +214,7 @@ class Dzienniczek {
   		}
   		else 
   		{
-  			for($j = 0; $j < 8 - $lessonOnDay; $j++)
+  			for($j = 0; $j < $lessonOnDay; $j++)
   			{
   				array_push($absenceList, new Absence($currentWeek[$i], $j, ''));
   			}
@@ -320,16 +332,18 @@ class Dzienniczek {
   }
   
   // te funkcje beda duzo duzo bardziej rozbudowane
-  function displayAttendance($classId, $date){
+  function displayAttendance($classId, $select, $date){
   	$currentWeek = array();
+  	
   	if($date == null)
   	{
   		$currentWeek = $this->getCurrentWeek();
   	} 
   	else
   	{
-  		$currentWeek = $this->getWeek($date);
+  		$currentWeek = $this->getWeek($select, $date);
   	}
+  	$weekDate = '20'.$currentWeek[0];
   	// fake data
   	$studentAttendance = array();
 
@@ -348,6 +362,8 @@ class Dzienniczek {
   	}
   	
   	$this->tpl->assign('currentWeek', $currentWeek);
+  	$this->tpl->assign('classId', $classId);
+  	$this->tpl->assign('date', $weekDate);
   	$this->tpl->assign('studentAttendance', $studentAttendance);
   	$this->tpl->display('attendance.tpl');
   }

@@ -32,7 +32,7 @@
 	<!--header-->
 	<div style="width:100%; height:100px; overflow:hidden; margin: 0 auto; background-color:#333">
       
-	  <div style="width:760px; height:100px; margin: 0 auto; overflow:hidden; position:relative">
+	  <div style="width:780px; height:100px; margin: 0 auto; overflow:hidden; position:relative">
 			<img id="back" src="images/left_grey.png" align="left" style="margin-top:10px"/> <a href="{$SCRIPT_NAME}?action=start"><img id="home" src="images/home.png" align="left"/></a>
 			<div id="caption" style="height:44px; margin-top:20px;float:left; margin-left:12px; position:absolute">{block name=caption}{/block}</div>
 
@@ -41,13 +41,13 @@
 
 	</div>
 	
-	<div style=" overflow:hidden; width:760px; height:450px; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
+	<div style=" overflow:hidden; width:780px; height:450px; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
 		{block name=body}{/block}
 	</div>
 
 	<!--footer-->
 	<div style="width:100%; height:80px; overflow:hidden; margin: 0 auto; background-color:#333; margin-top:20px;">
-		<div style="width:760px; height:80px; margin: 0 auto;">
+		<div style="width:780px; height:80px; margin: 0 auto;">
 		<p style="text-align:center; color:#FFF; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-size:x-small">Najlepsi z najlepszych <a href="https://www.facebook.com/groups/329127673885131/?hc_location=stream">Wataha</a> &copy; 2013 All rights reserved. </p>
 		<p style="text-align:center; color:#CCC; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-size:x-small"> Jeśli chcesz kupic nasz produkt, pisz i nie krępuj się </p>
 		</div>

@@ -63,7 +63,10 @@ if(!$_logged) {
 			$dzienniczek->displayClass($_REQUEST['classId'], $_REQUEST['className']);
 			break;
 		case 'attendance':
-			$dzienniczek->displayAttendance($_REQUEST['classId'],null);
+			if(isset($_REQUEST['select']))
+				$dzienniczek->displayAttendance($_REQUEST['classId'],$_REQUEST['select'], $_REQUEST['date']);
+			else 
+				$dzienniczek->displayAttendance($_REQUEST['classId'], null, null);
 			break;
 		case 'marks':
 			$dzienniczek->displayMarks();
