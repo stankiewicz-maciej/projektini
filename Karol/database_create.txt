@@ -1,7 +1,7 @@
 
 CREATE TABLE version(tid serial PRIMARY KEY, dbversion integer);
 
-INSERT INTO version(dbversion) VALUES(16);
+INSERT INTO version(dbversion) VALUES(17);
 
 CREATE TABLE "parents"("parent_id" serial primary key,"name" varchar,"surname" varchar,"address" varchar,"tel" int,"email" varchar,"login" varchar(20),"password" varchar(20));
 

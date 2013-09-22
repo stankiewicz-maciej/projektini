@@ -5,7 +5,7 @@ class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
 
-	var $DB_VERSION = 16;
+	var $DB_VERSION = 17;
 
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
@@ -240,12 +240,41 @@ class DB_Helper {
 		$absence[1]=" ";
 		while($result=pg_fetch_row($rs1)){
 			$absence[$index]=$result[0];
-			$absence[$index+1]=$result[1];
-			$index+=2;}
+			$absence[$index+1]=$this->showDay($result[0]);
+			$absence[$index+2]=$result[1];
+			$index+=3;}
 			
 		pg_close($con);
 		return $absence;
 	}
+	
+	 function showDay($data){
+			$day = date("l",strtotime($data)); 
+	switch($day){
+		case 'Monday':
+			return 'Poniedziałek';
+		break;
+	
+		case 'Tuesday':
+			return 'Wtorek';
+		break;
+	
+		case 'Wednesday':
+			return 'Środa';
+		break;
+	
+		case 'Thursday':
+			return 'Czwartek';
+		break;
+	
+		case 'Friday':
+			return 'Piątek';
+		break;
+	
+		default;
+			return "---";
+		break;
+}}
 
 	
 	function getLessonCount($dayId, $classId)
