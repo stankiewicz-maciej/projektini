@@ -40,12 +40,9 @@
 	  </div>
 
 	</div>
-	
-<<<<<<< HEAD
-	<div style=" overflow:hidden; width:760px; min-height:400px; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
-=======
-	<div style=" overflow:hidden; width:780px; height:450px; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
->>>>>>> 101a70c71f09c6533492d8adba997715248a38a2
+
+	<div style=" overflow:hidden; width:780px; min-height:400px; height:450px; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
+
 		{block name=body}{/block}
 	</div>
 

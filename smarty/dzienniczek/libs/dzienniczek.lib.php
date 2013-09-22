@@ -225,7 +225,7 @@ class Dzienniczek {
   			array_push($absenceList, new Absence($currentWeek[$i], $lessonOnDay+$j, '/'));
   		}
   		
-  		$absences = $this->db->getAbsences($userId, $currentWeek[$i]);
+  		$absences = $this->db->getAbsencesByDay($userId, $currentWeek[$i]);
   		if($absences != FALSE) {
 	  		while ($row = pg_fetch_array($absences)) {
 	  			$absenceList[($i * 8) + $row[0]-1]->setSymbol('|');

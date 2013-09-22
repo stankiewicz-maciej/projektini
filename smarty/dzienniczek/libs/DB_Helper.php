@@ -4,11 +4,9 @@ include('DB_Consts.php');
 class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
-<<<<<<< HEAD
+
 	var $DB_VERSION = 16;
-=======
-	var $DB_VERSION = 13;
->>>>>>> 101a70c71f09c6533492d8adba997715248a38a2
+
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
 
@@ -178,7 +176,7 @@ class DB_Helper {
 		pg_close($con);
 		return $rs;
 	}
-<<<<<<< HEAD
+
 	function getClassId($studentId){
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		$query = DB_Consts::$GET_CLASS_ID . $studentId . '\';';
@@ -233,21 +231,22 @@ class DB_Helper {
 	}
 	
 	function getAbsences($id){
-	$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-	$query='SELECT abs_date, lesson_number  FROM absence WHERE student_id=\''.$id.'\';';
-	
-	$rs1=pg_query($con, $query);
-	$index=0;
-	$absence[0]="Brak nieobecności";
-	$absence[1]=" ";
-	while($result=pg_fetch_row($rs1)){
-		$absence[$index]=$result[0];
-		$absence[$index+1]=$result[1];
-		$index+=2;}
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query='SELECT abs_date, lesson_number  FROM absence WHERE student_id=\''.$id.'\';';
 		
-	pg_close($con);
-	return $absence;
-=======
+		$rs1=pg_query($con, $query);
+		$index=0;
+		$absence[0]="Brak nieobecności";
+		$absence[1]=" ";
+		while($result=pg_fetch_row($rs1)){
+			$absence[$index]=$result[0];
+			$absence[$index+1]=$result[1];
+			$index+=2;}
+			
+		pg_close($con);
+		return $absence;
+	}
+
 	
 	function getLessonCount($dayId, $classId)
 	{
@@ -263,7 +262,7 @@ class DB_Helper {
 		return $lessonCount;
 	}
 	
-	function getAbsences($studentId, $day)
+	function getAbsencesByDay($studentId, $day)
 	{
 		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		$query = sprintf(DB_Consts::$GET_STUDENT_ABSENCES, $studentId, $day);
@@ -279,7 +278,7 @@ class DB_Helper {
 		$rs = pg_query($con, $query);
 		
 		return $rs;
->>>>>>> 101a70c71f09c6533492d8adba997715248a38a2
+
 	}
   
 }
