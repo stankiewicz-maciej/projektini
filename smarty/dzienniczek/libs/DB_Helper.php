@@ -4,7 +4,11 @@ include('DB_Consts.php');
 class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
+<<<<<<< HEAD
 	var $DB_VERSION = 16;
+=======
+	var $DB_VERSION = 13;
+>>>>>>> 101a70c71f09c6533492d8adba997715248a38a2
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
 
@@ -174,6 +178,7 @@ class DB_Helper {
 		pg_close($con);
 		return $rs;
 	}
+<<<<<<< HEAD
 	function getClassId($studentId){
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		$query = DB_Consts::$GET_CLASS_ID . $studentId . '\';';
@@ -242,6 +247,39 @@ class DB_Helper {
 		
 	pg_close($con);
 	return $absence;
+=======
+	
+	function getLessonCount($dayId, $classId)
+	{
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query = sprintf(DB_Consts::$GET_LESSONS_ON_DAY_COUNT, $classId, $dayId);
+		$rs = pg_query($con, $query);
+		$lessonCount = 0;
+		if($rs != FALSE)
+		{
+			$row=pg_fetch_row($rs);
+			$lessonCount = $row[0];
+		}
+		return $lessonCount;
+	}
+	
+	function getAbsences($studentId, $day)
+	{
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query = sprintf(DB_Consts::$GET_STUDENT_ABSENCES, $studentId, $day);
+		$rs = pg_query($con, $query);
+		
+		return $rs;
+	}
+	
+	function getStudentsByClass($classId)
+	{
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query = sprintf(DB_Consts::$GET_STUDENTS_BY_CLASS, $classId);
+		$rs = pg_query($con, $query);
+		
+		return $rs;
+>>>>>>> 101a70c71f09c6533492d8adba997715248a38a2
 	}
   
 }

@@ -1,5 +1,5 @@
 {extends file="main_template.tpl"}
-{block name=caption}Klasa IIIA{/block}
+{block name=caption}Klasa {$className}{/block}
 
 {block name=head} 
 	<link rel="stylesheet" type="text/css" href="css/menu_style.css">
@@ -8,7 +8,7 @@
 {block name=body}
 <nav id="navigationMenu" style="z-index: 1000; position: fixed; ">
 	<ul>
-		<li id="attendMenu" class='active'> <a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=attendance', 'targetdiv', 'attendMenu')" ><span>Frekwencja</span></a></li>
+		<li id="attendMenu" class='active'> <a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=attendance&classId={$classId}', 'targetdiv', 'attendMenu')" ><span>Frekwencja</span></a></li>
 		<li id="marksMenu"><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=marks', 'targetdiv', 'marksMenu')" ><span>Oceny</span></a>
 			<ul>
 				<li><a href="#">Matematyka</a></li>
@@ -31,12 +31,14 @@
 	<p>This is some default tab content, embedded directly inside this space and not via Ajax. It can be shown when no tabs are automatically selected, or associated with a certain tab, in this case, the first tab.</p>
 </div>
 
-
-
 <script type="text/javascript">
 	var target;
 	var page_request;
 	var loader_content = "<img src='images/ajax-loader.gif' style='margin-left:300px; margin-top:50px; ' /> Trwa pobieranie danych...Proszę czekać...";
+
+	$(document).ready(function(){
+		sendRequest('{$SCRIPT_NAME}?action=attendance&classId={$classId}', 'targetdiv', 'attendMenu')
+	});
 	
 	function sendRequest(scriptFile, targetElement, activeMenu)
 	{	

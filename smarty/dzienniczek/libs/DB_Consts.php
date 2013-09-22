@@ -21,9 +21,15 @@
 		static $GET_CLASS_NAME = 'SELECT class_descr FROM classes WHERE class_id=';
 		static $GET_PARENTS_CHILDREN = 'SELECT login, name FROM students WHERE parent_id=';
 		static $GET_STUDENT_NAME = 'select name FROM students WHERE login=\'';
+<<<<<<< HEAD
 		static $GET_TEACHER_VIEW = 'SELECT surname, name, email, tel FROM teachers ORDER BY surname;';
 		static $GET_CLASS_ID = 'SELECT class_id FROM students WHERE login=\'';
 		static $GET_STUDENT_ID = 'SELECT stud_id FROM students WHERE login=\'';
+=======
+		static $GET_LESSONS_ON_DAY_COUNT = 'SELECT count(*) FROM timetable WHERE class_id=%u AND day_id=%u;';
+		static $GET_STUDENT_ABSENCES = 'SELECT lesson_number FROM absence WHERE student_id=%u AND abs_date=\'%s\'::timestamp without time zone;';
+		static $GET_STUDENTS_BY_CLASS = 'SELECT stud_id, name, surname FROM students WHERE class_id=%u;';
+>>>>>>> 101a70c71f09c6533492d8adba997715248a38a2
 		
 		static $SELECT_ALL = "SELECT * FROM ";
 		

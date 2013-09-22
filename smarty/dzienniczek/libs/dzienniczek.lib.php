@@ -20,6 +20,7 @@ class Dzienniczek {
   var $fd = null;
   
   var $daysOfWeek = array("Poniedzialek", "Wtorek", "Sroda", "Czwartek", "Piatek");
+  var $lastAttendanceDate = 'asdsa';
 
   /**
   * class constructor
@@ -155,7 +156,6 @@ class Dzienniczek {
   
   function getCurrentWeek() {
   	$currentWeek = array();
-  	
   	$mon= date('y-m-d', strtotime('Monday this week'));
   	$tue= date('y-m-d', strtotime('Tuesday this week'));
   	$wed= date('y-m-d', strtotime('Wednesday this week'));
@@ -170,14 +170,26 @@ class Dzienniczek {
   	return $currentWeek;
   }
   
-  function getWeek($date) {
+  function getWeek($select, $date) {
   	$currentWeek = array();
-  	 
-  	$mon= date('y-m-d', strtotime('$date Monday'));
-  	$tue= date('y-m-d', strtotime('$date Tuesday'));
-  	$wed= date('y-m-d', strtotime('$date Wednesday'));
-  	$thu= date('y-m-d', strtotime('$date Thursday'));
-  	$fri= date('y-m-d', strtotime('$date Friday'));
+  	
+  	$currentDate;
+  	if($select == 'next')
+  	{
+  		$mon= date('y-m-d', strtotime($date . 'next week'));
+  		$tue= date('y-m-d', strtotime($date .' next week + 1 day'));
+  		$wed= date('y-m-d', strtotime($date .' next week + 2 day'));
+  		$thu= date('y-m-d', strtotime($date .' next week + 3 day'));
+  		$fri= date('y-m-d', strtotime($date .' next week + 4 day'));
+  	}
+  	else 
+  	{
+  		$mon= date('y-m-d', strtotime($date . 'last week'));
+  		$tue= date('y-m-d', strtotime($date . 'last week + 1 day'));
+  		$wed= date('y-m-d', strtotime($date . 'last week + 2 day'));
+  		$thu= date('y-m-d', strtotime($date . 'last week + 3 day'));
+  		$fri= date('y-m-d', strtotime($date . 'last week + 4 day'));
+  	}
   	 
   	array_push($currentWeek, $mon);
   	array_push($currentWeek, $tue);
@@ -192,33 +204,36 @@ class Dzienniczek {
   	$absenceList = array();
   	for($i = 0 ; $i < sizeof( $this->daysOfWeek, 0); $i++)
   	{
+  		$lessonOnDay = $this->db->getLessonCount($i+1, $classId);
   		if((time()) >= strtotime($currentWeek[$i]))
   		{
-	  		for($j = 0; $j < 8; $j++)
+	  		for($j = 0; $j < $lessonOnDay; $j++)
 	  		{
 	  			array_push($absenceList, new Absence($currentWeek[$i], $j, '-'));
 	  		}
   		}
   		else 
   		{
-  			for($j = 0; $j < 8; $j++)
+  			for($j = 0; $j < $lessonOnDay; $j++)
   			{
   				array_push($absenceList, new Absence($currentWeek[$i], $j, ''));
   			}
   		}
   		
-  		$absences = $this->db->getAbsences($userId, $currentWeek[$i]);
-  		
-  		while ($row = pg_fetch_array($absences)) {
-  			$absenceList[$row[0]] = '|';
+  		for($j = 0; $j < 8 - $lessonOnDay; $j++)
+  		{
+  			array_push($absenceList, new Absence($currentWeek[$i], $lessonOnDay+$j, '/'));
   		}
   		
+  		$absences = $this->db->getAbsences($userId, $currentWeek[$i]);
+  		if($absences != FALSE) {
+	  		while ($row = pg_fetch_array($absences)) {
+	  			$absenceList[($i * 8) + $row[0]-1]->setSymbol('|');
+	  		}
+  		}
   	}
-  	$absenceList1 = array(new Absence('09/19', 1, '-'), new Absence('09/19', 2, '-'), new Absence('09/19', 3, '-'),
-  			new Absence('09/19', 4, '-'), new Absence('09/19', 5, '|'),new Absence('09/19', 6, '|'), new Absence('09/19', 7, '-'),
-  			new Absence('09/19', 8, '/')
-  	);
-  	return $absenceList1;
+
+  	return $absenceList;
   }
   
   /* ------------------------------------------------------ BEGIN ACTIONS SECTION ------------------------------------------------------ */
@@ -317,45 +332,38 @@ class Dzienniczek {
   }
   
   // te funkcje beda duzo duzo bardziej rozbudowane
-  function displayAttendance($classId, $date){
+  function displayAttendance($classId, $select, $date){
   	$currentWeek = array();
+  	
   	if($date == null)
   	{
   		$currentWeek = $this->getCurrentWeek();
   	} 
   	else
   	{
-  		$currentWeek = $this->getWeek($date);
+  		$currentWeek = $this->getWeek($select, $date);
   	}
+  	$weekDate = '20'.$currentWeek[0];
   	// fake data
+  	$studentAttendance = array();
+
+  	$students = $this->db->getStudentsByClass($classId);
   	
-  	$absenceList1 = $this->prepareAbsenceList(1, $classId);
-  	//$absenceList2 = array(new Absence('09/18', 5));
-  	/*$absence1 = new Absence('09/19', 1);
-  	$absence2 = new Absence('09/19', 4);
-  	$absence3 = new Absence('09/20', 1);
-  	$absence4 = new Absence('09/18', 5);*/
+  	if($students != FALSE) 
+  	{
+  		while ($studentRow = pg_fetch_array($students)) {
+  			$absenceDetails = new AbsenceDetails();
+  			$absenceDetails->setUserId($studentRow[0]);
+  			$absenceDetails->setUserName($studentRow[1]);
+  			$absenceDetails->setUserSurname($studentRow[2]);
+  			$absenceDetails->setAbscences($this->prepareAbsenceList($studentRow[0], $classId, $currentWeek));
+  			array_push($studentAttendance, $absenceDetails);
+  		}
+  	}
   	
-  	$absenceDetails1 = new AbsenceDetails();
-  	$absenceDetails1->setUserId(1);
-  	$absenceDetails1->setUserName('Karol');
-  	$absenceDetails1->setUserSurname('Zurek');
-  	$absenceDetails1->setAbscences($absenceList1);
-  	
-  	$absenceDetails2 = new AbsenceDetails();
-  	$absenceDetails2->setUserId(2);
-  	$absenceDetails2->setUserName('Maciej');
-  	$absenceDetails2->setUserSurname('Stankiewicz');
-  	//$absenceDetails2->setAbscences($absenceList2);
-  	
-  	$absenceDetails3 = new AbsenceDetails();
-  	$absenceDetails3->setUserId(3);
-  	$absenceDetails3->setUserName('Bartlomiej');
-  	$absenceDetails3->setUserSurname('Szysz');
-  	
-  	//$studentAttendance = array("Karol Zurek", "Maciej Stankiewicz", "Monika Zieba");
-  	$studentAttendance = array($absenceDetails1, $absenceDetails2, $absenceDetails3);
   	$this->tpl->assign('currentWeek', $currentWeek);
+  	$this->tpl->assign('classId', $classId);
+  	$this->tpl->assign('date', $weekDate);
   	$this->tpl->assign('studentAttendance', $studentAttendance);
   	$this->tpl->display('attendance.tpl');
   }
@@ -368,8 +376,10 @@ class Dzienniczek {
   function displayHomework(){
   	$this->tpl->display('homework.tpl');
   }
-  function displayClass(){
+  function displayClass($classId, $className){
   	$this->tpl->assign('login', $_SESSION['zalogowany']);
+  	$this->tpl->assign('classId', $classId);
+  	$this->tpl->assign('className', $className);
   	$this->tpl->display('class.tpl');
   }
   /**
