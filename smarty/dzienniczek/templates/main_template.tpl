@@ -41,7 +41,7 @@
 
 	</div>
 	
-	<div style=" overflow:hidden; width:760px; height:450px; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
+	<div style=" overflow:hidden; width:760px; min-height:400px; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
 		{block name=body}{/block}
 	</div>
 

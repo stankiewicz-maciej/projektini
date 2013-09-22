@@ -4,7 +4,7 @@ include('DB_Consts.php');
 class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
-	var $DB_VERSION = 11;
+	var $DB_VERSION = 16;
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
 
@@ -88,6 +88,7 @@ class DB_Helper {
 			$rs=pg_query($con, $query);
 			while($tmp=pg_fetch_row($rs)){
 				$children["$tmp[0]"]="$tmp[1]";}
+			pg_close($con);
 			 return $children;
 	}
 	function getChildName($studentId){
@@ -99,19 +100,30 @@ class DB_Helper {
 			$row=pg_fetch_row($rs);
 			$name = $row[0];
 		}
+		pg_close($con);
 		return $name;
 		}
 		
 	function getTeachersList(){
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-		//$children_names=pg_query( select name from student where parentid=costam
-			$teachers_list=array("Adam", "Adam", "polski", "Ewa", "Bryła", "matematyka", "Karol", "Burek", "angielski", "Bartłomiej", "Szysz", "W-F","Adam", "Adam", "polski", "Ewa", "Bryła", "matematyka", "Karol", "Burek", "angielski", "Bartłomiej", "Szysz", "W-F","Adam", "Adam", "polski", "Ewa", "Bryła", "matematyka", "Karol", "Burek", "angielski", "Bartłomiej", "Szysz", "W-F");
+		$query = DB_Consts::$GET_TEACHER_VIEW;
+		$rs=pg_query($con, $query);
+		$tmp=0;
+		while($result = pg_fetch_row($rs)){
+			$teachers_list[$tmp]=$result[0];
+			$teachers_list[$tmp+1]=$result[1];
+			$teachers_list[$tmp+2]=$result[2];
+			$teachers_list[$tmp+3]=$result[3];
+			$tmp+=4;
+		}
+			pg_close($con);
 			return $teachers_list;
 	}
 	function getTeachingList($teacherId){
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		$query = DB_Consts::$GET_TEACHING . $teacherId . ';';
 		$teaching = pg_query($con, $query ) or die("Cannot execute query:");
+		pg_close($con);
 		return $teaching;
 	}
 	
@@ -121,6 +133,7 @@ class DB_Helper {
 		$rs = pg_query($con, $query );
 		$row = pg_fetch_array($rs);
 		$subjectName = $row[0];
+		pg_close($con);
 		return $subjectName;
 	}
 	
@@ -130,6 +143,7 @@ class DB_Helper {
 		$rs = pg_query($con, $query );
 		$row = pg_fetch_array($rs);
 		$className = $row[0];
+		pg_close($con);
 		return $className;
 	}
 
@@ -156,10 +170,78 @@ class DB_Helper {
 			$query = DB_Consts::$GET_TEACHER_DATA;
 		}
 		$query .= $login . '\';';
-
 		$rs=pg_query($con, $query);
-		
+		pg_close($con);
 		return $rs;
+	}
+	function getClassId($studentId){
+		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query = DB_Consts::$GET_CLASS_ID . $studentId . '\';';
+		$rs = pg_query($con, $query );
+		$row = pg_fetch_array($rs);
+		$classId = $row[0];
+		pg_close($con);
+		return $classId;
+	}
+	function getNews($classId){
+	$now=date("Y-m-d");
+	
+	$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+	$query='SELECT name, description  FROM   events WHERE  date_start <= \''.$now. '\' AND  date_end   >= \''.$now.'\' AND class_id=\''.$classId.'\';';
+	
+	$rs1=pg_query($con, $query);
+	$index=0;
+	while($result=pg_fetch_row($rs1)){
+		$events[$index]=$result[0];
+		$events[$index+1]=$result[1];
+		$index+=2;
+		}
+		pg_close($con);
+	return $events;
+	}
+	
+	
+	function getHomeworks($classId){
+	$now=date("Y-m-d");
+	
+	$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+	$query='SELECT subject, description, date_end  FROM   homeworks WHERE  date_start <= \''.$now. '\' AND  date_end   >= \''.$now.'\' AND class_id=\''.$classId.'\';';
+	
+	$rs1=pg_query($con, $query);
+	$index=0;
+	while($result=pg_fetch_row($rs1)){
+		$work[$index]=$result[0];
+		$work[$index+1]=$result[1];
+		$work[$index+2]=$result[2];
+		$index+=3;
+		}
+		pg_close($con);
+	return $work;
+	}
+	function getStudentId($login){
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query = DB_Consts::$GET_STUDENT_ID . $login.'\';';
+		$rs =pg_query($query);
+		$result=pg_fetch_row($rs);
+		
+		return $result['0'];
+	}
+	
+	function getAbsences($id){
+	$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+	$query='SELECT abs_date, lesson_number  FROM absence WHERE student_id=\''.$id.'\';';
+	
+	$rs1=pg_query($con, $query);
+	$index=0;
+	$absence[0]="Brak nieobecności";
+	$absence[1]=" ";
+	while($result=pg_fetch_row($rs1)){
+		$absence[$index]=$result[0];
+		$absence[$index+1]=$result[1];
+		$index+=2;}
+		
+	pg_close($con);
+	return $absence;
 	}
   
 }

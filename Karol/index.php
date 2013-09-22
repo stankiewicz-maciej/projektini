@@ -39,6 +39,15 @@ if(!$_logged) {
 	}
 } else {
 	switch($_action) {
+		case 'absence':
+			$dzienniczek->displayAbsences($_REQUEST['id']);
+			break;
+		case 'homeworks':
+			$dzienniczek->displayHomeworks($_REQUEST['id']);
+			break;
+		case 'news':
+			$dzienniczek->displayNews($_REQUEST['id']);
+			break;
 		case 'mychild':
 			$dzienniczek->displayPvMyChild($_REQUEST['id']);
 			break;

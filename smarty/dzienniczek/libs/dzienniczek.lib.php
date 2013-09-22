@@ -379,11 +379,51 @@ class Dzienniczek {
   function displayPvMyChild($id){
 	$this->tpl->assign('login', $_SESSION['zalogowany']);
 	$name=$this->db->getChildName($id); 
+	$this->tpl->assign('who' ,$id);
 	$this->tpl->assign('name', $name);
 	$this->tpl->display('pv_child_view.tpl');
-	  
+  }
+  /**
+  * display news acoording data
+  *
+  */
+  function displayNews($id){
+  $this->tpl->assign('login', $_SESSION['zalogowany']);	
+  $classId=$this->db->getClassId($id);
+  $events=$this->db->getNews($classId); 
+  $className=$this->db->getClassName($classId);
+  $this->tpl->assign('className', $className);
+  $this->tpl->assign('news', $events);
+	$this->tpl->display('news.tpl');
   }
   
+  /**
+  * display homeworks acorrding to date
+  *
+  */
+  function displayHomeworks($id){
+  $this->tpl->assign('login', $_SESSION['zalogowany']);	
+  $classId=$this->db->getClassId($id);
+  $homeworks=$this->db->getHomeworks($classId); 
+  $className=$this->db->getClassName($classId);
+  $this->tpl->assign('className', $className);
+  $this->tpl->assign('homeworks', $homeworks);
+	$this->tpl->display('homeworks.tpl');
+  }
+  /**
+  * display homeworks acorrding to date
+  *
+  */
+  function displayAbsences($login){
+  $this->tpl->assign('login', $_SESSION['zalogowany']);	
+  $name=$this->db->getChildName($login);
+  $sid=$this->db->getStudentId($login);
+  $absences=$this->db->getAbsences($sid);
+  $this->tpl->assign('sid', $sid);
+  $this->tpl->assign('name', $name);
+  $this->tpl->assign('absences', $absences);
+	$this->tpl->display('absence.tpl');
+  }
   /* ------------------------------------------------------ END ACTIONS SECTION ------------------------------------------------------*/
   
 }
