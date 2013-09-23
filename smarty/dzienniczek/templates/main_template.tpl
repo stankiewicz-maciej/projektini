@@ -7,10 +7,12 @@
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
 
 <script type="text/javascript">
+
+var height = document
 	$(document).ready(function(){
 		$("#caption").delay(0).animate({ 
 			top: "+=90px",}, 1500 );
-					
+							
 		$('#back').click(function(){
         parent.history.back();
         return false; });
@@ -41,7 +43,7 @@
 
 	</div>
 
-	<div style=" overflow:hidden; width:780px; min-height:400px; height:450px; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
+	<div style=" overflow:hidden; width:780px; min-height:500px; margin: 0 auto; position:relative; margin-top:35px; overflow-y: auto;">
 
 		{block name=body}{/block}
 	</div>

@@ -39,24 +39,27 @@ if(!$_logged) {
 	}
 } else {
 	switch($_action) {
+		case 'marks':
+				$dzienniczek->displayMarks($_REQUEST['id']);
+				break;
 		case 'timetable':
-			$dzienniczek->displayTimetable($_REQUEST['id']);
-			break;
+				$dzienniczek->displayTimetable($_REQUEST['id']);
+				break;
 		case 'absence':
-			$dzienniczek->displayAbsences($_REQUEST['id']);
-			break;
+				$dzienniczek->displayAbsences($_REQUEST['id']);
+				break;
 		case 'homeworks':
-			$dzienniczek->displayHomeworks($_REQUEST['id']);
-			break;
+				$dzienniczek->displayHomeworks($_REQUEST['id']);
+				break;
 		case 'news':
-			$dzienniczek->displayNews($_REQUEST['id']);
-			break;
+				$dzienniczek->displayNews($_REQUEST['id']);
+				break;
 		case 'mychild':
-			$dzienniczek->displayPvMyChild($_REQUEST['id']);
-			break;
+				$dzienniczek->displayPvMyChild($_REQUEST['id']);
+				break;
 		case 'logout':
-			$resultMessage = $dzienniczek->logout();
-			$dzienniczek->displayLogout($resultMessage);
+				$resultMessage = $dzienniczek->logout();
+				$dzienniczek->displayLogout($resultMessage);
 			break;
 		case 'userdata':
 				$dzienniczek->displayUserData();

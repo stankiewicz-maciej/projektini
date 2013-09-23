@@ -273,9 +273,9 @@ class Dzienniczek {
 	$row = pg_fetch_array($user_data);
 	
 	$this->tpl->assign('personal_data',
-                             array('Imie i nazwisko:' => $row[1].' '.$row[2],
-                             		'Email' => $row[3],
-                             		'Telefon' => $row[4],
+                             array('Imie i nazwisko:' => $row[0].' '.$row[1],
+                             		'Email' => $row[2],
+                             		'Telefon' => $row[3],
 									));
 	$this->tpl->display('userdata.tpl'); 
   }
@@ -367,9 +367,7 @@ class Dzienniczek {
   	$this->tpl->assign('studentAttendance', $studentAttendance);
   	$this->tpl->display('attendance.tpl');
   }
-  function displayMarks(){
-  	$this->tpl->display('marks.tpl');
-  }
+  
   function displayEvents(){
   	$this->tpl->display('events.tpl');
   }
@@ -460,9 +458,90 @@ class Dzienniczek {
 	$this->tpl->assign('friday', $friday);
 	
 	$this->tpl->display('timetable.tpl');
-	 
-  
-	  
+	}
+ 
+ 	 /**
+  *display marks for student
+    *
+  */
+  function displayMarks($login){
+	$this->tpl->assign('login', $_SESSION['zalogowany']);	
+	//matematyka
+	$matspr=$this->db->getMarks($login, 1, 1);
+	$matpd=$this->db->getMarks($login, 1, 2); 
+	$matakt=$this->db->getMarks($login, 1, 3); 
+	
+	//fizyka
+	$fizspr=$this->db->getMarks($login, 2, 1);
+	$fizpd=$this->db->getMarks($login, 2, 2); 
+	$fizakt=$this->db->getMarks($login, 2, 3);
+	
+	//informatyka
+	$infspr=$this->db->getMarks($login, 3, 1);
+	$infpd=$this->db->getMarks($login, 3, 2); 
+	$infakt=$this->db->getMarks($login, 3, 3); 
+	
+	//bioogia
+	$biospr=$this->db->getMarks($login, 4, 1);
+	$biopd=$this->db->getMarks($login, 4, 2); 
+	$bioakt=$this->db->getMarks($login, 4, 3); 
+	
+	//chemia
+	$chespr=$this->db->getMarks($login, 5, 1);
+	$chepd=$this->db->getMarks($login, 5, 2); 
+	$cheakt=$this->db->getMarks($login, 5, 3); 
+	
+	//geografia
+	$geospr=$this->db->getMarks($login, 6, 1);
+	$geopd=$this->db->getMarks($login, 6, 2); 
+	$geoakt=$this->db->getMarks($login, 6, 3); 
+	
+	//j. polski
+	$polspr=$this->db->getMarks($login, 7, 1);
+	$polpd=$this->db->getMarks($login, 7, 2); 
+	$polakt=$this->db->getMarks($login, 7, 3); 
+	
+	//j. angielski
+	$angspr=$this->db->getMarks($login, 8, 1);
+	$angpd=$this->db->getMarks($login, 8, 2); 
+	$angakt=$this->db->getMarks($login, 8, 3); 
+	
+	//assigment part
+	
+	$this->tpl->assign('matspr', $matspr);
+	$this->tpl->assign('matpd', $matpd);
+	$this->tpl->assign('matakt', $matakt);
+	
+	$this->tpl->assign('fizspr', $fizspr);
+	$this->tpl->assign('fizpd', $fizpd);
+	$this->tpl->assign('fizakt', $fizakt);
+	
+	$this->tpl->assign('infspr', $infspr);
+	$this->tpl->assign('infpd', $infpd);
+	$this->tpl->assign('infakt', $infakt);
+	
+	$this->tpl->assign('biospr', $biospr);
+	$this->tpl->assign('biopd', $biopd);
+	$this->tpl->assign('bioakt', $bioakt);
+	
+	$this->tpl->assign('chespr', $chespr);
+	$this->tpl->assign('chepd', $chepd);
+	$this->tpl->assign('cheakt', $cheakt);
+	
+	$this->tpl->assign('geospr', $geospr);
+	$this->tpl->assign('geopd', $geopd);
+	$this->tpl->assign('geoakt', $geoakt);
+	
+	$this->tpl->assign('polspr', $polspr);
+	$this->tpl->assign('polpd', $polpd);
+	$this->tpl->assign('polakt', $polakt);
+	
+	$this->tpl->assign('angspr', $angspr);
+	$this->tpl->assign('angpd', $angpd);
+	$this->tpl->assign('angakt', $angakt);
+		
+	
+	$this->tpl->display('marks.tpl'); 
   }
   
   /* ------------------------------------------------------ END ACTIONS SECTION ------------------------------------------------------*/

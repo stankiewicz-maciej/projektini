@@ -5,7 +5,7 @@ class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
 
-	var $DB_VERSION = 17;
+	var $DB_VERSION = 19;
 
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
@@ -150,10 +150,6 @@ class DB_Helper {
 	}
 
 	function getMarksForClass($classId) {
-
-	}
-
-	function getMarksForStudent($studentId) {
 
 	}
 
@@ -321,9 +317,26 @@ class DB_Helper {
 			$index++;
 		}
 		for($i=$index; $i<8; $i++){
-			$day_plan[$i]='---';}
+			$day_plan[$i]=' ';}
 		pg_close($con);
 		return $day_plan;
+		}
+	
+	function getMarks($login, $subject_id, $type_id){
+	
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$student_id=$this->getStudentId($login);
+		$query='SELECT mark from marks where student_id='.$student_id.' and subject_id='.$subject_id.' and mark_type='.$type_id.';';
+		$rs=pg_query($con, $query);
+		$i=0;
+		$marks[0]='-';
+		 while($result=pg_fetch_row($rs)){
+		 	$marks[$i]=$result[0];
+			$i++;}
+		 
+		
+		 pg_close($con);	
+		return $marks;
 		}
   
 }
