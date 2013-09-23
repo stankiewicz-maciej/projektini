@@ -71,6 +71,14 @@ class DB_Helper {
 		}
 	}
 	
+	function getLogin($id, $parentId){
+		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query='select login from students where name=\''.$id.'\' and parent_id=\''.$parentId.'\';';
+		$rs=pg_query($con, $query);
+		$result=pg_fetch_row($rs);
+		return $result;}
+		
+	
 	function getUserCredentials($userType) {
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		if($userType == 'student') {

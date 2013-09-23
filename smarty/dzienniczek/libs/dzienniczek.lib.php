@@ -302,9 +302,15 @@ class Dzienniczek {
       $this->tpl->assign('login', $_SESSION['zalogowany']);
 	  $result=$this->db->getChildrens($this->getUserId());
 	  $number=count($result);
+	  if($number!=1){
 	  $this->tpl->assign('fig_children', $number);
 	  $this->tpl->assign('children_names', $result);
-	  $this->tpl->display('parents_children.tpl');
+	  $this->tpl->display('parents_children.tpl');}
+	  else{
+		  $rs=implode(" ", $result);
+		  $login=$this->db->getLogin($rs,$this->getUserId());
+		  $login1=implode(" ", $login);
+		  $this->displayPvMyChild($login1);}
 		  
   }
   
