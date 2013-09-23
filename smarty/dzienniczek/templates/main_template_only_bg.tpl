@@ -16,7 +16,7 @@
 
 <body link="#FFFFFF">
 
-	<div style="width:760px ; overflow-x:auto; margin: 0 0; position:relative; margin:5px; overflow-y: auto;">
+	<div style="width:780px ; overflow-x:auto; margin: 0 0; position:relative; margin:5px; overflow-y:hidden ;">
 		{block name=body}{/block}
 	</div>
 
