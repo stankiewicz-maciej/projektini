@@ -1,7 +1,7 @@
-
+﻿
 CREATE TABLE version(tid serial PRIMARY KEY, dbversion integer);
 
-INSERT INTO version(dbversion) VALUES(20);
+INSERT INTO version(dbversion) VALUES(21);
 
 CREATE TABLE "parents"("parent_id" serial primary key,"name" varchar,"surname" varchar,"address" varchar,"tel" int,"email" varchar,"login" varchar(20),"password" varchar(20));
 
@@ -34,25 +34,52 @@ CREATE TABLE "marks"("student_id" int references students(stud_id),"subject_id" 
 
 CREATE TABLE "absence"("student_id" int references students(stud_id),"abs_date" date,"lesson_number" int);
 
-INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'adam', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'ba', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bb', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bc', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bd', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'be', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bf', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bg', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bh', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bi', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bj', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bk', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bl', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bm', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bn', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bo', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bq', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bp', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'br', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bs', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bt', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bu', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'bw', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bx', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'by', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'bz', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'ca', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'cb', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'cd', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'ce', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'cf', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'cg', 'a' );
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'ch', 'a' );
 
 
-INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'ewa', 'Hasło' );
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Maria', 'Kowalska', 636333222, 'mariano@o2.pl', 'da', 'a');
 
-
-
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Maria', 'Kowalska', 636333222, 'mariano@o2.pl', 'zbigi', 'haslo');
-
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
-INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'MaKota', 555333222, 'dorrud@o2.pl', 'db', 'a');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Fernandez', 555333222, 'dorrud@o2.pl', 'dc', 'a');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Xiao', 555333222, 'dorrud@o2.pl', 'dd', 'a');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Bilic', 555333222, 'dorrud@o2.pl', 'de', 'a');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Gates', 555333222, 'dorrud@o2.pl', 'df', 'a');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Jobbs', 555333222, 'dorrud@o2.pl', 'dg', 'a');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Meo', 555333222, 'dorrud@o2.pl', 'dh', 'a');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Żurek', 555333222, 'dorrud@o2.pl', 'di', 'a');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Skalski', 555333222, 'dorrud@o2.pl', 'dj', 'a');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Casillas', 555333222, 'dorrud@o2.pl', 'dk', 'a');
 
 
 
@@ -131,15 +158,66 @@ INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 5, 5
 
 INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,1,1);
 INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,2,1);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,3,1);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,4,1);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,5,1);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,6,2);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,7,2);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,8,2);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,1,2);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,2,2);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,8,1);
 
 
-INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'karolo', 'okrasa');
-INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'monikaz', 'okrasa');
-INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'karol', 'a');
-INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'arturi', 'okrasa');
-INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'maciejs', 'okrasa');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'a', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'b', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'c', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'd', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'e', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Miła', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 1, 2, 'f', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Żurek', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 3, 'g', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Szysz', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 4, 'h', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Iskra', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 5, 'i', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Jackowski', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 6, 'j', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Nowakowski', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 6, 'k', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Walker', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 1, 7, 'l', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Daniels', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 8, 'm', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Casillas', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 9, 'n', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Ronaldo', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 10, 'o', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'di Maria', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 11, 'p', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Ramos', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 12, 'r', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Alonso', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 1, 13, 's', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Benzema', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 14, 't', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Lopez', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 15, 'u', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Kowal', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 16, 'w', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Carlos', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 17, 'x', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Valdes', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 17, 'y', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Kolumb', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 1, 18, 'z', 'a');
 
-INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Miła', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 1, 2, 'mateuszs', 'zurek');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Rambo', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 3, 'aa', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Balboa', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 7, 'ab', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Martin', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 19, 'ac', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Martinez', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 10, 'ad', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Żurawski', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 11, 'ae', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Beckham', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 2, 20, 'af', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Lewandowski', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 21, 'ag', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Błaszczykowska', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 15, 'ah', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Pudzianowski', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 22, 'ai', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Szpilka', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 23, 'aj', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Tyson', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 12, 'ak', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Dyląg', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 2, 24, 'mateuszs', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Simpson', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 17, 'al', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Travolta', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 12, 'am', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'de Niro', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 25, 'an', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Picasso', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 26, 'ao', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Valdano', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 27, 'ap', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Perez', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 2, 2, 'aq', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Zidane', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 28, 'ar', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Materazzi', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 29, 'as', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Hamilton', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 30, 'at', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Edison', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 31, 'au', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Newton', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 2, 31, 'aw', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Polak', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 2, 32, 'ax', 'a');
 
 INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 1, 1, 1);
 INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 1, 2, 1);
@@ -178,26 +256,135 @@ INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 6, 3, 1);
 INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 6, 4, 2);
 INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 6, 5, 1);
 
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 1, 2);
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 2, 2);
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 3, 2);
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 4, 2);
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 5, 2);
 
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 1, 3);
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 2, 3);
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 3, 3);
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 3, 3);
-INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 5, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (2, 2, 5, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (2, 2, 5, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (2, 2, 5, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (2, 2, 5, 2);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (3, 3, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (3, 3, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (3, 3, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (3, 3, 4, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (3, 3, 5, 3);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (4, 4, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (4, 4, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (4, 4, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (4, 4, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (4, 4, 5, 3);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (5, 5, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (5, 5, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (5, 5, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (5, 5, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (5, 5, 5, 1);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (6, 6, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (6, 6, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (6, 6, 3, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (6, 6, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (6, 6, 5, 1);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (7, 7, 1, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (7, 7, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (7, 7, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (7, 7, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (7, 7, 5, 2);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (8, 8, 1, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (8, 8, 2, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (8, 8, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (8, 8, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (8, 8, 5, 3);
 
 
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (9, 1, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (9, 1, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (9, 1, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (9, 1, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (9, 1, 5, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (9, 1, 6, 3);
 
 
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (10, 2, 5, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (10, 2, 5, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (10, 2, 5, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (10, 2, 5, 2);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (11, 3, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (11, 3, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (11, 3, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (11, 3, 4, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (11, 3, 5, 3);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (12, 4, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (12, 4, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (12, 4, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (12, 4, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (12, 4, 5, 3);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (13, 5, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (13, 5, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (13, 5, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (13, 5, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (13, 5, 5, 1);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (14, 6, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (14, 6, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (14, 6, 3, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (14, 6, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (14, 6, 5, 1);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (15, 7, 1, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (15, 7, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (15, 7, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (15, 7, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (15, 7, 5, 2);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (31, 8, 1, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (31, 8, 2, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (31, 8, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (31, 8, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (31, 8, 5, 3);
 
 
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (32, 1, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (32, 1, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (32, 1, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (32, 1, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (32, 1, 5, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (32, 1, 6, 3);
 
 
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (33, 2, 5, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (33, 2, 5, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (33, 2, 5, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (33, 2, 5, 2);
 
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (34, 3, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (34, 3, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (34, 3, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (34, 3, 4, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (34, 3, 5, 3);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 4, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 4, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 4, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 4, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 4, 5, 3);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 5, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 5, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 5, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 5, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (25, 5, 5, 1);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (26, 6, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (26, 6, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (26, 6, 3, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (26, 6, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (26, 6, 5, 1);
 
 
 INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (1, '2013-09-16', 2);

@@ -5,7 +5,7 @@ class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
 
-	var $DB_VERSION = 20;
+	var $DB_VERSION = 21;
 
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
