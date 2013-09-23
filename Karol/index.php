@@ -84,7 +84,7 @@ if(!$_logged) {
 				$dzienniczek->displayAttendance($_REQUEST['classId'], null, null);
 			break;
 		case 'marks_by_sub':
-			$dzienniczek->displayMarks($_REQUEST['classId'], $_REQUEST['subjectId']);
+			$dzienniczek->displayMarksBySubject($_REQUEST['classId'], $_REQUEST['subjectId']);
 			break;
 		case 'events':
 			$dzienniczek->displayEvents($_REQUEST['classId']);

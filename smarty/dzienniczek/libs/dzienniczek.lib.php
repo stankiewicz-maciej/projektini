@@ -374,7 +374,7 @@ class Dzienniczek {
   	$this->tpl->display('attendance.tpl');
   }
   
-  function displayMarks($classId, $subjectId){
+  function displayMarksBySubject($classId, $subjectId){
   	$marksTypes = array();
   	 
   	$marksTypesRs = $this->db->getMarksTypes();
