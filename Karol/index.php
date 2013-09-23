@@ -39,6 +39,9 @@ if(!$_logged) {
 	}
 } else {
 	switch($_action) {
+		case 'teacherplan':
+				$dzienniczek->displayTeacherPlan();
+				break;
 		case 'marks':
 				$dzienniczek->displayMarks($_REQUEST['id']);
 				break;

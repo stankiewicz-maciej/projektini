@@ -70,7 +70,7 @@ class DB_Helper {
 			pg_close($this->con);
 		}
 	}
-	
+
 	function getLogin($id, $parentId){
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		$query='select login from students where name=\''.$id.'\' and parent_id=\''.$parentId.'\';';
@@ -92,6 +92,49 @@ class DB_Helper {
 		return $rs;
 	}
 
+	function getTeacherPlan($id, $day){
+		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query= 'SELECT t.lesson_id, c.class_descr from classes c, timetable t, teachers tr, teaching tea where tea.teacher_id ='.$id.' and t.day_id ='.$day.' and t.class_id = c.class_id and tea.class_id = c.class_id and tea.class_id= t.class_id and tea.subject_id=t.subject_id and tr.teacher_id=tea.teacher_id order by t.lesson_id;';
+		$rs=pg_query($con, $query);
+		$index=0;
+		$list[0]='1';
+		$list[1]=' ';
+		$list[2]='2';
+		$list[3]=' ';
+		$list[4]='3';
+		$list[5]=' ';
+		$list[6]='4';
+		$list[7]=' ';
+		$list[8]='5';
+		$list[9]=' ';
+		$list[10]='6';
+		$list[11]=' ';
+		$list[12]='7';
+		$list[13]=' ';
+		$list[14]='8';
+		$list[15]=' ';
+		
+		while($result=pg_fetch_row($rs)){
+			if($result[0]=='1'){
+				$list[1]=$result[1];}
+			elseif($result[0]=='2'){
+				$list[3]=$result[1];}
+			elseif($result[0]=='3'){
+				$list[5]=$result[1];}
+			elseif($result[0]=='4'){
+				$list[7]=$result[1];}
+			elseif($result[0]=='5'){
+				$list[9]=$result[1];}
+			elseif($result[0]=='6'){
+				$list[11]=$result[1];}
+			elseif($result[0]=='7'){
+				$list[13]=$result[1];}
+			elseif($result[0]=='8'){
+				$list[15]=$result[1];}
+			}
+		return $list;
+		
+	}
 	function getChildrens($parentId) {
 		$con = pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		$query=DB_Consts::$GET_PARENTS_CHILDREN. $parentId. ';';
