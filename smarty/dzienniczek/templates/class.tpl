@@ -9,26 +9,26 @@
 <nav id="navigationMenu" style="z-index: 1000; position: fixed; ">
 	<ul>
 		<li id="attendMenu" class='active'> <a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=attendance&classId={$classId}', 'targetdiv', 'attendMenu')" ><span>Frekwencja</span></a></li>
-		<li id="marksMenu"><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=marks', 'targetdiv', 'marksMenu')" ><span>Oceny</span></a>
+		<li id="marksMenu"><a href="javascript:void()"><span>Oceny</span></a>
 			<ul>
-				<li><a href="#">Matematyka</a></li>
-				<li><a href="#">Jezyk polski</a></li>
-				<li><a href="#">Wf</a></li>
+				{foreach $subjects as $subject}
+					<li><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=marks_by_sub&classId={$classId}&subjectId={$subject->getId()}', 'targetdiv', 'marksMenu')">{$subject->getName()}</a></li>
+				 {/foreach}
 			</ul>
 		</li>
-		<li id="eventsMenu"><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=events', 'targetdiv', 'eventsMenu')" ><span>Wydarzenia</span></a></li>
-		<li id="homeworkMenu"><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=homework', 'targetdiv', 'homeworkMenu')" ><span>Zadania domowe</span></a>
+		<li id="eventsMenu"><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=events&classId={$classId}', 'targetdiv', 'eventsMenu')" ><span>Wydarzenia</span></a></li>
+		<li id="homeworkMenu"><a href="javascript:void()"><span>Zadania domowe</span></a>
 			<ul>
-				<li><a href="#">Matematyka</a></li>
-				<li><a href="#">Jezyk polski</a></li>
-				<li><a href="#">Wf</a></li>
+				 {foreach $subjects as $subject}
+					<li><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=homework&classId={$classId}&subjectId={$subject->getId()}', 'targetdiv', 'homeworkMenu')">{$subject->getName()}</a></li>
+				 {/foreach}
 			</ul>
 		</li>
 	</ul>
 </nav>
 
 <div id="targetdiv" style="position:relative; border:1px solid #11498e; margin-bottom: 1em; padding: 0px; top: 100px; overflow: auto;">
-	<p>This is some default tab content, embedded directly inside this space and not via Ajax. It can be shown when no tabs are automatically selected, or associated with a certain tab, in this case, the first tab.</p>
+	
 </div>
 
 <script type="text/javascript">
@@ -69,7 +69,7 @@
 			page_request.open('GET', ajaxfriendlyurl, true)
 			page_request.send(null)
 
-		}, 2000);
+		}, 1200);
 	}
 	
 	function handleResponse()

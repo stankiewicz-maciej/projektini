@@ -5,7 +5,7 @@ class DB_Helper {
 
 	// ONLY FOR DEVELOPMENT PHASE!
 
-	var $DB_VERSION = 19;
+	var $DB_VERSION = 20;
 
 	var $DB_CREATE_SCRIPT = 'database_create.txt';
 	var $DB_DROP_SCRIPT = 'database_drop.txt';
@@ -199,25 +199,49 @@ class DB_Helper {
 	return $events;
 	}
 	
+	function getFullNews($classId){
+		$now=date("Y-m-d");
+	
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query='SELECT name, description, date_start, date_end  FROM   events WHERE  date_start <= \''.$now. '\' AND  date_end   >= \''.$now.'\' AND class_id=\''.$classId.'\';';
+	
+		$rs=pg_query($con, $query);
+
+		pg_close($con);
+		return $rs;
+	}
+	
 	
 	function getHomeworks($classId){
 	$now=date("Y-m-d");
 	
 	$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
-	$query='SELECT subject, description, date_end  FROM   homeworks WHERE  date_start <= \''.$now. '\' AND  date_end   >= \''.$now.'\' AND class_id=\''.$classId.'\';';
+	$query='SELECT subject_id, description, date_end  FROM   homeworks WHERE  date_start <= \''.$now. '\' AND  date_end   >= \''.$now.'\' AND class_id=\''.$classId.'\';';
 	
 	$rs1=pg_query($con, $query);
 	$index=0;
 	while($result=pg_fetch_row($rs1)){
-		$work[$index]=$result[0];
+		$work[$index]=$this->getSubjectName($result[0]);
 		$work[$index+1]=$result[1];
 		$work[$index+2]=$result[2];
 		$work[$index+3]=$this->showDay($result[2]);
 		$index+=4;
 		}
-		pg_close($con);
+
 	return $work;
 	}
+	
+	function getHomeworksBySubject($classId, $subjectId){
+		$now=date("Y-m-d");
+	
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query='SELECT description, date_start, date_end  FROM  homeworks WHERE  date_start <= \''.$now. '\' AND  date_end   >= \''.$now.'\' AND class_id=\''.$classId.'\' AND subject_id =\''.$subjectId .'\';';
+	
+		$rs=pg_query($con, $query);
+	
+		return $rs;
+	}
+	
 	function getStudentId($login){
 		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
 		$query = DB_Consts::$GET_STUDENT_ID . $login.'\';';
@@ -338,6 +362,38 @@ class DB_Helper {
 		 pg_close($con);	
 		return $marks;
 		}
+		
+	function getSubjectsByClass($classId)
+	{
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query='SELECT DISTINCT ON (s.subject_id, s.subject_name) s.subject_id, s.subject_name from subjects s, timetable t where class_id ='.$classId.' AND s.subject_id = t.subject_id;';
+		$rs=pg_query($con, $query);
+		return $rs;
+	}
+	
+	function getMarksBySubject($studentId, $subjectId) 
+	{
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query='SELECT mark_type, mark from marks where student_id ='.$studentId.' AND subject_id ='.$subjectId.' order by mark_type;';
+		$rs=pg_query($con, $query);
+		return $rs;
+	}
+	
+	function getMarkName($markId)
+	{
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query='SELECT mark_name from marks_types where mark_type='.$markId.';';
+		$rs=pg_query($con, $query);
+		return $rs;
+	}
+	
+	function getMarksTypes()
+	{
+		$con= pg_connect("host=$this->dbhost dbname=$this->dbname user=$this->dbuser password=$this->dbpass");
+		$query='SELECT mark_type, mark_name from marks_types;';
+		$rs=pg_query($con, $query);
+		return $rs;
+	}
   
 }
 

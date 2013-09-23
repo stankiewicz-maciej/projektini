@@ -1,13 +1,15 @@
 <?php
-	class Subject
+	class Mark
 	{
 		private $id;
+		private $mark;
 		private $name;
 		
-		public function __construct($id, $name)
+		public function __construct($id,$mark, $name)
 		{
 			$this->id = $id;
 			$this->name = $name;
+			$this->mark = $mark;
 		}
 		
 		public function setId($id)
@@ -18,6 +20,16 @@
 		public function getId()
 		{
 			return $this->id;
+		}
+		
+		public function setMark($mark)
+		{
+			$this->mark = $mark;
+		}
+		
+		public function getMark()
+		{
+			return $this->mark;
 		}
 		
 		public function setName($name)

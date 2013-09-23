@@ -34,3 +34,109 @@ table.attendance_table tr:first-child td:first-child {
 	min-width: 20px;
 }
 
+.event_first_row{
+	min-width: 185px;
+	height: 30px;
+	border-left: 0px solid #002f6a;
+	border-top: 0px solid #002f6a;
+	border-right: 1px solid #11498e;
+	padding-left: 5px;
+	font-size:12px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	white-space: nowrap;
+}
+
+.event_row{
+	min-width: 10px;
+	height: 25px;
+	border-left: 0px solid #4c7cb7;
+	border-right: 1px solid #4c7cb7;
+	border-top: 1px solid #4c7cb7;
+	border-bottom: 0px solid #4c7cb7;
+	padding-left: 2px;
+	font-size:12px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	white-space: nowrap;
+	text-align: center;
+}
+
+table.event_table td:last-child{
+	border-right: 1px solid #11498e;
+}
+	
+.homework_first_row{
+	min-width: 246px;
+	height: 30px;
+	border-left: 0px solid #002f6a;
+	border-top: 0px solid #002f6a;
+	border-right: 1px solid #11498e;
+	padding-left: 5px;
+	font-size:12px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	white-space: nowrap;
+}
+
+.homework_row{
+	max-width: 150px;
+	min-height: 25px;
+	border-left: 0px solid #4c7cb7;
+	border-right: 1px solid #4c7cb7;
+	border-top: 1px solid #4c7cb7;
+	border-bottom: 0px solid #4c7cb7;
+	padding-left: 2px;
+	font-size:12px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	white-space: pre-wrap;
+	text-align: center;
+}
+
+table.homework_table td:last-child{
+	border-right: 1px solid #11498e;
+}
+
+.marks_first_row{
+	min-width: 185px;
+	height: 30px;
+	border-left: 0px solid #002f6a;
+	border-top: 0px solid #002f6a;
+	border-right: 1px solid #11498e;
+	padding-left: 5px;
+	font-size:12px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	white-space: nowrap;
+}
+
+.marks_types_first_row{
+	min-width: 100px;
+	height: 30px;
+	border-left: 0px solid #002f6a;
+	border-top: 0px solid #002f6a;
+	border-right: 1px solid #11498e;
+	padding-left: 5px;
+	font-size:12px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	white-space: nowrap;
+}
+
+.marks_row{
+	max-width: 150px;
+	min-height: 25px;
+	max-height: 25px;
+	height: 25px;
+	border-left: 0px solid #4c7cb7;
+	border-right: 1px solid #4c7cb7;
+	border-top: 1px solid #4c7cb7;
+	border-bottom: 0px solid #4c7cb7;
+	padding-left: 2px;
+	font-size:12px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	white-space: nowrap;
+	text-align: center;
+}
+
+table.marks_table td:last-child{
+	border-right: 1px solid #11498e;
+}
+table.marks_table tr:first-child td:first-child {
+	min-width: 20px;
+}

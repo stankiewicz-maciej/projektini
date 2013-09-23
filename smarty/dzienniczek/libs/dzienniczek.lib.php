@@ -4,6 +4,12 @@ include('Model/User.php');
 include('Model/Education.php');
 include('Model/Absence.php');
 include('Model/AbsenceDetails.php');
+include('Model/Event.php');
+include('Model/Subject.php');
+include('Model/Homework.php');
+include('Model/Mark.php');
+include('Model/StudentMark.php');
+include('Model/MarkType.php');
 /**
  * dzienniczek application library
  *
@@ -368,16 +374,106 @@ class Dzienniczek {
   	$this->tpl->display('attendance.tpl');
   }
   
-  function displayEvents(){
-  	$this->tpl->display('events.tpl');
+  function displayMarks($classId, $subjectId){
+  	$marksTypes = array();
+  	 
+  	$marksTypesRs = $this->db->getMarksTypes();
+  	if($marksTypesRs != FALSE)
+  	{
+  		while ($markTypeRow = pg_fetch_array($marksTypesRs)) {
+  			$marktype = new MarkType($markTypeRow[0], $markTypeRow[1]);
+  			array_push($marksTypes, $marktype);
+  		}
+  	}
+  	
+  	$studentMarks = array();
+  	
+  	$students = $this->db->getStudentsByClass($classId);
+  	 
+  	if($students != FALSE)
+  	{
+  		while ($studentRow = pg_fetch_array($students)) {
+  			$student = new StudentMark();
+  			$student->setStudentId($studentRow[0]);
+  			$student->setStudentName($studentRow[1]);
+  			$student->setStudentSurname($studentRow[2]);
+  			$marks = array();
+  			for($i = 1; $i <= sizeof($marksTypes); $i++)
+  			{
+  				$mark = new Mark($i, 0, '');
+  				array_push($marks, $mark);
+  			}
+  			$marksRs = $this->db->getMarksBySubject($studentRow[0], $subjectId);
+  			if($marksRs != FALSE)
+  			{
+  				while ($markRow = pg_fetch_array($marksRs)) {
+  					$markRs = $this->db->getMarkName($markRow[0]);
+  					$markName = pg_fetch_array($markRs);
+  					$mark = new Mark($markRow[0], $markRow[1], $markName);
+  					array_push($marks, $mark);
+  				}
+  			}
+  			$student->setMarks($marks);
+  			array_push($studentMarks, $student);
+  		}
+  	}
+  	  	
+  	$this->tpl->assign('studentMarks', $studentMarks);
+  	$this->tpl->assign('marksTypes', $marksTypes);
+  	$this->tpl->display('only_bg_marks.tpl');
   }
-  function displayHomework(){
-  	$this->tpl->display('homework.tpl');
+  function displayEvents($classId){
+  	$events = array();
+  	$eventsRs = $this->db->getFullNews($classId);
+  	
+  	if($eventsRs != FALSE)
+  	{
+  		while ($eventRow = pg_fetch_array($eventsRs)) {
+  			$event = new Event();
+  			$event->setName($eventRow[0]);
+  			$event->setDescription($eventRow[1]);
+  			$event->setStartDate($eventRow[2]);
+  			$event->setEndDate($eventRow[3]);
+  			array_push($events, $event);
+  		}
+  	}
+  	
+  	$this->tpl->assign('events',$events);
+  	$this->tpl->display('only_bg_news.tpl');
+  }
+  function displayHomework($classId, $subjectId){
+  	
+  	$homeworks = array();
+  	$homeworksRs = $this->db->getHomeworksBySubject($classId, $subjectId);
+  	 
+  	if($homeworksRs != FALSE)
+  	{
+  		while ($homeworkRow = pg_fetch_array($homeworksRs)) {
+  			$homework = new Homework();
+  			$homework->setDescription($homeworkRow[0]);
+  			$homework->setStartDate($homeworkRow[1]);
+  			$homework->setEndDate($homeworkRow[2]);
+  			array_push($homeworks, $homework);
+  		}
+  	}
+  	$this->tpl->assign('homeworks', $homeworks);
+  	$this->tpl->display('only_bg_homeworks.tpl');
   }
   function displayClass($classId, $className){
+  	$subjects = array();
+  	$subjectsRs = $this->db->getSubjectsByClass($classId);
+  	if($subjectsRs != FALSE)
+  	{
+  		while ($subjectRow = pg_fetch_array($subjectsRs)) {
+  			$subject = new Subject($subjectRow[0], $subjectRow[1]);
+
+  			array_push($subjects, $subject);
+  		}
+  	}
   	$this->tpl->assign('login', $_SESSION['zalogowany']);
   	$this->tpl->assign('classId', $classId);
   	$this->tpl->assign('className', $className);
+  	$this->tpl->assign('subjects', $subjects);
   	$this->tpl->display('class.tpl');
   }
   /**

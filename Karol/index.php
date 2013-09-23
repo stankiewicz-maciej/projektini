@@ -83,14 +83,14 @@ if(!$_logged) {
 			else 
 				$dzienniczek->displayAttendance($_REQUEST['classId'], null, null);
 			break;
-		case 'marks':
-			$dzienniczek->displayMarks();
+		case 'marks_by_sub':
+			$dzienniczek->displayMarks($_REQUEST['classId'], $_REQUEST['subjectId']);
 			break;
 		case 'events':
-			$dzienniczek->displayEvents();
+			$dzienniczek->displayEvents($_REQUEST['classId']);
 			break;
 		case 'homework':
-			$dzienniczek->displayHomework();
+			$dzienniczek->displayHomework($_REQUEST['classId'], $_REQUEST['subjectId']);
 			break;
 		case 'start':
 		default:
