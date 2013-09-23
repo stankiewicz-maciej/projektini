@@ -73,6 +73,9 @@ if(!$_logged) {
 		case 'teachers_list':
 				$dzienniczek->displayTeachersList();
 				break;
+		case 'add_homework':
+			$dzienniczek->addHomework($_REQUEST['classId'], $_REQUEST['subjectId'], $_REQUEST['homework_descr'], $_REQUEST['startDate'], $_REQUEST['endDate']);
+			break;
 		case 'education':
 			$dzienniczek->displayMySubjectsList();
 			break;

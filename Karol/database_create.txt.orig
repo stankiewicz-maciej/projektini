@@ -1,0 +1,218 @@
+
+CREATE TABLE version(tid serial PRIMARY KEY, dbversion integer);
+
+<<<<<<< HEAD
+INSERT INTO version(dbversion) VALUES(19);
+=======
+INSERT INTO version(dbversion) VALUES(20);
+>>>>>>> Wyswietlanie wszystkiego w klasie
+
+CREATE TABLE "parents"("parent_id" serial primary key,"name" varchar,"surname" varchar,"address" varchar,"tel" int,"email" varchar,"login" varchar(20),"password" varchar(20));
+
+CREATE TABLE "teachers"("teacher_id" serial primary key,"name" varchar,"surname" varchar,"tel" int,"email" varchar,"login" varchar(20),"password" varchar(20));
+
+CREATE TABLE "classes"("class_id" serial primary key,"class_descr" varchar);
+
+CREATE TABLE "marks_types"("mark_type" int primary key,"mark_name" varchar);
+
+CREATE TABLE "days"("day_id" serial primary key,"day" varchar);
+
+CREATE TABLE "subjects"("subject_id" serial primary key,"subject_name" varchar);
+
+CREATE TABLE "events"("class_id" int references classes(class_id),"name" varchar,"description" varchar,"date_start" date,"date_end" date);
+
+CREATE TABLE "homeworks"("class_id" int references classes(class_id), subject_id int references subjects(subject_id), "description" varchar,"date_start" date,"date_end" date);
+
+CREATE TABLE "timetable"("class_id" int references classes(class_id),"day_id" int references days(day_id),"lesson_id" int,"subject_id" int references subjects(subject_id));
+
+
+
+CREATE TABLE "teaching"("teacher_id" int references teachers(teacher_id),"subject_id" int references subjects(subject_id),"class_id" int references classes(class_id));
+
+CREATE TABLE "students"("stud_id" serial primary key,"name" varchar,"surname" varchar,"pesel" varchar,"address" varchar,"tel" int,"email" varchar,"class_id" int references classes(class_id),"parent_id" int REFERENCES parents(parent_id),"login" varchar(20),"password" varchar(20));
+
+
+
+CREATE TABLE "marks"("student_id" int references students(stud_id),"subject_id" int references subjects(subject_id),"mark" int,"mark_type" int);
+
+
+CREATE TABLE "absence"("student_id" int references students(stud_id),"abs_date" date,"lesson_number" int);
+
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Adam', 'Nowak', 'Krakow, ul. Nowa 3', 666777666, 'adamn@gmail.com', 'adam', 'a' );
+
+
+INSERT INTO parents (name, surname, address, tel, email, login, password) VALUES ('Ewa', 'Mila', 'Krakow, ul. Stara 3', 555777666, 'amila@gmail.com', 'ewa', 'Hasło' );
+
+
+
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Maria', 'Kowalska', 636333222, 'mariano@o2.pl', 'zbigi', 'haslo');
+
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+INSERT INTO teachers (name, surname, tel, email, login, password) VALUES ('Dorota', 'Rudna', 555333222, 'dorrud@o2.pl', 'nauczyciel', 'nauczyciel');
+
+
+
+INSERT INTO classes (class_descr) VALUES ('IIIa');
+INSERT INTO classes (class_descr) VALUES ('IIIb');
+
+
+INSERT INTO marks_types (mark_type, mark_name) VALUES ( 1, 'sprawdzian');
+INSERT INTO marks_types (mark_type, mark_name) VALUES ( 2, 'praca domowa');
+INSERT INTO marks_types (mark_type, mark_name) VALUES ( 3, 'aktywnosc');
+
+
+
+INSERT INTO days ( day ) VALUES ('Poniedzialek');
+INSERT INTO days ( day ) VALUES ('Wtorek');
+INSERT INTO days ( day ) VALUES ('Sroda');
+INSERT INTO days ( day ) VALUES ('Czwartek');
+INSERT INTO days ( day ) VALUES ('Piatek');
+INSERT INTO days ( day ) VALUES ('Sobota');
+INSERT INTO days ( day ) VALUES ('Niedziela');
+
+
+INSERT INTO subjects (subject_name) VALUES ('Matematyka');
+INSERT INTO subjects (subject_name) VALUES ('Fizyka');
+INSERT INTO subjects (subject_name) VALUES ('Infromatyka');
+INSERT INTO subjects (subject_name) VALUES ('Biologia');
+INSERT INTO subjects (subject_name) VALUES ('Chemia');
+INSERT INTO subjects (subject_name) VALUES ('Geografia');
+INSERT INTO subjects (subject_name) VALUES ('J. Polski');
+INSERT INTO subjects (subject_name) VALUES ('J. Angielski');
+
+INSERT INTO events (class_id, name, description, date_start, date_end) VALUES (1, 'Wywiadowka', 'Wydarzenie od 21 do 28.' , '2013-9-21', '2013-9-28' );
+INSERT INTO events (class_id, name, description, date_start, date_end) VALUES (1, 'Wywiadowka2', 'WYdarzenie od 22 do 30' , '2013-9-10', '2013-10-30' );
+INSERT INTO events (class_id, name, description, date_start, date_end) VALUES (1, 'Wywiadowka3', 'Wydarzenie od 11 do 12' , '2013-9-11', '2013-9-12' );
+INSERT INTO events (class_id, name, description, date_start, date_end) VALUES (1, 'Wywiadowka4', 'wydarzenie od 30 d0 30' , '2013-08-30', '2013-10-30' );
+
+INSERT INTO homeworks (class_id, subject_id, description, date_start, date_end) VALUES (1, 1, 'Zadanie od 3.12 do 3.15' , '2013-08-30', '2013-10-30' );
+INSERT INTO homeworks (class_id, subject_id, description, date_start, date_end) VALUES (1, 3, 'Opisać Pana Tadeusza' , '2013-08-30', '2013-10-30' );
+INSERT INTO homeworks (class_id, subject_id, description, date_start, date_end) VALUES (1, 7, 'Opisać Wertera' , '2013-08-30', '2013-10-30' );
+INSERT INTO homeworks (class_id, subject_id, description, date_start, date_end) VALUES (1, 3, 'Zrobic zadanie 6 i 7 ze zbioru zadań (strona 187)' , '2013-09-30', '2013-10-30' );
+INSERT INTO homeworks (class_id, subject_id, description, date_start, date_end) VALUES (1, 3, 'Jasiek ma 5 klocków, a Ela ma 3. Ile zostanie Jaśkowi klocków gdy odda Eli 2, nastepnie wezmie jej połowe i odejmie jeden?' , '2013-09-22', '2013-10-01' );
+INSERT INTO homeworks (class_id, subject_id, description, date_start, date_end) VALUES (1, 5, 'Nauczyc sie tabliczki mnozenia do 100' , '2013-09-21', '2013-09-25' );
+
+
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 1, 1, 1);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 1, 2, 2);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 1, 3, 4);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 1, 4, 4);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 1, 5, 5);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 1, 6, 6);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 2, 1, 7);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 2, 2, 4);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 2, 3, 4);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 2, 4, 3);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 2, 5, 3);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 2, 6, 2);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 2, 7, 1);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 3, 1, 2);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 3, 2, 2);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 3, 3, 4);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 3, 4, 3);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 3, 5, 1);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 3, 6, 1);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 3, 7, 6);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 3, 8, 8);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 4, 1, 1);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 4, 2, 3);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 4, 3, 5);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 4, 4, 6);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 4, 5, 7);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 5, 1, 3);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 5, 2, 4);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 5, 3, 5);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 5, 4, 6);
+INSERT INTO timetable ( class_id, day_id, lesson_id, subject_id) VALUES (1, 5, 5, 6);
+
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,1,1);
+INSERT INTO teaching (teacher_id, subject_id, class_id) VALUES (1,2,1);
+
+
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'karolo', 'okrasa');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Monika', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'monikaz', 'okrasa');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Karol', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'karol', 'a');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Artur', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'arturi', 'okrasa');
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Maciej', 'Nowak', '91020578963', 'Krakow ul. Kolorowa 2', 666666666, 'karol@onet.pl', 1, 1, 'maciejs', 'okrasa');
+
+INSERT INTO students (name, surname, pesel, address, tel, email, class_id, parent_id, login, password) VALUES ('Mateusz', 'Miła', '91050578911', 'Krakow ul. Nowa 2', 333366666, 'karol@ericpol.com', 1, 2, 'mateuszs', 'zurek');
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 1, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 1, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 1, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 1, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 1, 5, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 1, 6, 3);
+
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 2, 5, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 2, 5, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 2, 5, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 2, 5, 2);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 3, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 3, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 3, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 3, 4, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 3, 5, 3);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 4, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 4, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 4, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 4, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 4, 5, 3);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 5, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 5, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 5, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 5, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 5, 5, 1);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 6, 1, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 6, 2, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 6, 3, 1);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 6, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 6, 5, 1);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 1, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 2, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 3, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 4, 2);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 7, 5, 2);
+
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 1, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 2, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 3, 3);
+INSERT INTO marks (student_id, subject_id, mark, mark_type) VALUES (1, 8, 5, 3);
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (1, '2013-09-16', 2);
+
+INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (3, '2013-09-06', 3);
+INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (3, '2013-09-21', 3);
+INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (3, '2013-09-30', 2);
+
+INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (2, '2013-09-18', 2);
+INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (2, '2013-09-18', 3);
+INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (2, '2013-09-19', 2);
+INSERT INTO absence (student_id, abs_date, lesson_number) VALUES (2, '2013-09-20', 5);
+
+

@@ -2,6 +2,7 @@
 
 {block name=head}
 	<link rel="stylesheet" type="text/css" href="css/table.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 {/block}
 
 {block name=body}
@@ -21,17 +22,10 @@
 		    </tr>
 		{/foreach} 
 	</table>
-	
-	<!-- 
-		<div style=" position: relative; float: right;  margin-bottom: 1em; padding: 10px; top: 5px; margin-right: 20px;">
-		    <a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=event&classId={$classId}&select=previous&date={$date}', 'targetdiv', 'attendMenu')"><img src="images/previous.png" align="left" style="margin-right:10px"/> </a>
-		    <a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=event&classId={$classId}&select=next&date={$date}', 'targetdiv', 'attendMenu')"> <img src="images/forward.png" align="left"/> </a>
-		</div>
 		
-		<div id ="similar" style=" position: relative; float: left;  margin-bottom: 1em; padding: 10px; top: 20px; width: auto;">
-		    - oznacza obecnosc ucznia <br>
-		    | oznacza nieobecnosc ucznia
-		</div>
-	 -->
-
+	<div style="position: relative; float: left; width:450px;  margin-bottom: 1em; padding: 10px; top: 5px; margin-right: 20px;">
+		Treść zadania:<br> <textarea id="homeworkDescription" rows="5" cols="45"> </textarea><br><br>
+  		Data rozpoczęcia:<br> <input id="startDate" /><a href="#" id="add_homework" style="float: right"><img src="images/list_add.png" align="left" style="margin-right:10px"/></a><br><br>
+  		Data Zakończenia:<br> <input id="endDate" /><br><br>
+	</div>
 {/block}

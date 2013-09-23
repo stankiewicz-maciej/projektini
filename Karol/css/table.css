@@ -65,7 +65,8 @@ table.event_table td:last-child{
 }
 	
 .homework_first_row{
-	min-width: 246px;
+	min-width: 235px;
+	max-width: 235px;
 	height: 30px;
 	border-left: 0px solid #002f6a;
 	border-top: 0px solid #002f6a;
@@ -79,6 +80,8 @@ table.event_table td:last-child{
 .homework_row{
 	max-width: 150px;
 	min-height: 25px;
+	max-height: 25px;
+	height: 25px;
 	border-left: 0px solid #4c7cb7;
 	border-right: 1px solid #4c7cb7;
 	border-top: 1px solid #4c7cb7;

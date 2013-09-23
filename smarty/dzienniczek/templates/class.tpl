@@ -8,19 +8,19 @@
 {block name=body}
 <nav id="navigationMenu" style="z-index: 1000; position: fixed; ">
 	<ul>
-		<li id="attendMenu" class='active'> <a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=attendance&classId={$classId}', 'targetdiv', 'attendMenu')" ><span>Frekwencja</span></a></li>
+		<li id="attendMenu" class='active'> <a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=attendance&classId={$classId}', 'targetdiv', 'attendMenu','0')" ><span>Frekwencja</span></a></li>
 		<li id="marksMenu"><a href="javascript:void()"><span>Oceny</span></a>
 			<ul>
 				{foreach $subjects as $subject}
-					<li><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=marks_by_sub&classId={$classId}&subjectId={$subject->getId()}', 'targetdiv', 'marksMenu')">{$subject->getName()}</a></li>
+					<li><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=marks_by_sub&classId={$classId}&subjectId={$subject->getId()}', 'targetdiv', 'marksMenu','{$subject->getId()}')">{$subject->getName()}</a></li>
 				 {/foreach}
 			</ul>
 		</li>
-		<li id="eventsMenu"><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=events&classId={$classId}', 'targetdiv', 'eventsMenu')" ><span>Wydarzenia</span></a></li>
+		<li id="eventsMenu"><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=events&classId={$classId}', 'targetdiv', 'eventsMenu','0')" ><span>Wydarzenia</span></a></li>
 		<li id="homeworkMenu"><a href="javascript:void()"><span>Zadania domowe</span></a>
 			<ul>
 				 {foreach $subjects as $subject}
-					<li><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=homework&classId={$classId}&subjectId={$subject->getId()}', 'targetdiv', 'homeworkMenu')">{$subject->getName()}</a></li>
+					<li><a href="javascript:void()" onclick="javascript:sendRequest('{$SCRIPT_NAME}?action=homework&classId={$classId}&subjectId={$subject->getId()}', 'targetdiv', 'homeworkMenu', '{$subject->getId()}')">{$subject->getName()}</a></li>
 				 {/foreach}
 			</ul>
 		</li>
@@ -35,17 +35,27 @@
 	var target;
 	var page_request;
 	var loader_content = "<img src='images/ajax-loader.gif' style='margin-left:300px; margin-top:50px; ' /> Trwa pobieranie danych...Proszę czekać...";
-
+	var active;
+	var last_subject_id;
+	
 	$(document).ready(function(){
 		sendRequest('{$SCRIPT_NAME}?action=attendance&classId={$classId}', 'targetdiv', 'attendMenu')
 	});
 	
-	function sendRequest(scriptFile, targetElement, activeMenu)
+	function sendRequest(scriptFile, targetElement, activeMenu, subjectId)
 	{	
 		target = targetElement;
-		resetActiveMenu();
-		document.getElementById(activeMenu).className = "active"
+		active = activeMenu;
+		if(subjectId != '0' && subjectId != 'undefined')
+		{
+			last_subject_id = subjectId;
+		}
 		document.getElementById(target).innerHTML = loader_content;
+		if(active != 'addHomeworks' && active != 'addNews') 
+		{
+			resetActiveMenu();
+			document.getElementById(activeMenu).className = "active"
+		}
 		setTimeout(function(){
 			page_request = false;
 			
@@ -78,7 +88,27 @@
 		try{
 	
 			var strResponse = page_request.responseText;
+			
 				document.getElementById(target).innerHTML = strResponse;
+
+				if(active == 'homeworkMenu' || active == 'addHomeworks')
+				{
+					$("#startDate").datepicker({ dateFormat: 'yy-mm-dd' });
+				    $("#endDate").datepicker({ dateFormat: 'yy-mm-dd' });
+
+				    
+				    $("#add_homework").click(function() {
+				    	var homework_description = $('#homeworkDescription').val();
+					    sendRequest('{$SCRIPT_NAME}?action=add_homework&classId={$classId}&subjectId=' + last_subject_id + '&homework_descr=' + homework_description + '&startDate=' 
+							    + $("#startDate").val() + '&endDate=' + $("#endDate").val(), 'targetdiv', 'addHomeworks', last_subject_id);
+					});
+				}
+				else if(active == 'eventsMenu')
+				{
+					$("#startDate").datepicker({ dateFormat: 'yy-mm-dd' });
+				    $("#endDate").datepicker({ dateFormat: 'yy-mm-dd' });
+				}
+			    
 			} catch (e){
 				document.getElementById(target).innerHTML = e;
 			}	

@@ -231,7 +231,7 @@ class Dzienniczek {
   			array_push($absenceList, new Absence($currentWeek[$i], $lessonOnDay+$j, '/'));
   		}
   		
-  		$absences = $this->db->getAbsencesByDay($userId, '20'.$currentWeek[$i]);
+  		$absences = $this->db->getAbsencesByDay($userId, $currentWeek[$i]);
   		if($absences != FALSE) {
 	  		while ($row = pg_fetch_array($absences)) {
 	  			$absenceList[($i * 8) + $row[0]-1]->setSymbol('|');
@@ -302,46 +302,15 @@ class Dzienniczek {
       $this->tpl->assign('login', $_SESSION['zalogowany']);
 	  $result=$this->db->getChildrens($this->getUserId());
 	  $number=count($result);
-	  if($number!=1){
 	  $this->tpl->assign('fig_children', $number);
 	  $this->tpl->assign('children_names', $result);
-	  $this->tpl->display('parents_children.tpl');}
-	  else{
-		  $rs=implode(" ", $result);
-		  $login=$this->db->getLogin($rs,$this->getUserId());
-		  $login1=implode(" ", $login);
-		  $this->displayPvMyChild($login1);}
+	  $this->tpl->display('parents_children.tpl');
 		  
   }
   
    /**display teachers list
   *
   */
-  function displayTeacherPlan(){
-	  $this->tpl->assign('login', $_SESSION['zalogowany']);
-	  $user=$_SESSION['user_id'];
-	  
-	  	$monday=$this->db->getTeacherPlan($user, 1);
-	  	$tuesday=$this->db->getTeacherPlan($user, 2);
-	  	$wednesday=$this->db->getTeacherPlan($user, 3);
-	  	$thursday=$this->db->getTeacherPlan($user, 4);
-  		$friday=$this->db->getTeacherPlan($user, 5);
-		
-		$number=array( 1,2,3,4,5,6,7,8);
-		$time= array('8:00-8:45', '8:50-8:35', '9:45-10:30', '10:45-11:30', '11:40-12:25', '12:30-13:15', '13:30-14:15', '14:20-15:05');
-	
-		$this->tpl->assign('number', $number);
-		$this->tpl->assign('time', $time);
-		
-		$this->tpl->assign('monday', $monday);
-		$this->tpl->assign('tuesday', $tuesday);
-		$this->tpl->assign('wednesday', $wednesday);
-		$this->tpl->assign('thursday', $thursday);
-		$this->tpl->assign('friday', $friday);
-		
-		$this->tpl->display('teacher_plan.tpl');
-  }
-  
   function displayTeachersList(){
       $this->tpl->assign('login', $_SESSION['zalogowany']);
 	  $result=$this->db->getTeachersList();
@@ -404,8 +373,12 @@ class Dzienniczek {
   	$this->tpl->assign('studentAttendance', $studentAttendance);
   	$this->tpl->display('attendance.tpl');
   }
+<<<<<<< HEAD
   
-  function displayMarksBySubject($classId, $subjectId){
+  function displayEvents(){
+  	$this->tpl->display('events.tpl');
+=======
+  function displayMarks($classId, $subjectId){
   	$marksTypes = array();
   	 
   	$marksTypesRs = $this->db->getMarksTypes();
@@ -471,6 +444,7 @@ class Dzienniczek {
   	
   	$this->tpl->assign('events',$events);
   	$this->tpl->display('only_bg_news.tpl');
+>>>>>>> Wyswietlanie wszystkiego w klasie
   }
   function displayHomework($classId, $subjectId){
   	
@@ -558,11 +532,6 @@ class Dzienniczek {
   $this->tpl->assign('name', $name);
   $this->tpl->assign('absences', $absences);
 	$this->tpl->display('absence.tpl');
-  }
-  
-  function addHomework($classId, $subjectId, $homeworkDescr, $startDate, $endDate){
-  	$this->db->addHomework($classId, $subjectId, $homeworkDescr, $startDate, $endDate);
-  	$this->displayHomework($classId, $subjectId);
   }
   /**
   *display timetable for class
